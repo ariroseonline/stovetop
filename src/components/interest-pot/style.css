@@ -1,0 +1,12 @@
+.interestPot {
+  font-size: 12px;
+  border-radius: 11vw;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #eaeaea;
+  height: 15vw;
+  display: flex;
+  width: 15vw;
+  padding: 20px;
+}

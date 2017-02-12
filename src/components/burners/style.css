@@ -1,0 +1,6 @@
+.burners {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 0;
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQALHjx//zwjjgziWlpaMYAEYB8RmROaABAD0pw9ZenJcjAAAAABJRU5ErkJggg==) repeat;
+}

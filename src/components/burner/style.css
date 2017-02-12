@@ -1,0 +1,29 @@
+.burnerSlot {
+  height: 25vw;
+  display: flex;
+  width: 25vw;
+  padding: 20px;
+}
+
+.burner {
+  box-shadow: inset 0 0 0 3px blue, inset 0 0 0 6px yellow, inset 0 0 0 9px red;
+  border-radius: 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: white;
+  flex: 1;
+}
+
+.burnerActionIcon {
+  position: absolute;
+}
+
+@media (max-width: 699px) {
+  .burnerSlot {
+    width: 50vw;
+    height: 50vw;
+  }
+
+}
