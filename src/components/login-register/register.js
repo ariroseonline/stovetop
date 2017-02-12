@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react"
 import './style.css';
-import { browserHistory } from "react-router";
+import { hashHistory } from "react-router";
 import firebase from "firebase"
 
 class Register extends Component {
@@ -63,7 +63,7 @@ class Register extends Component {
       email: user.providerData[0].email
     }).then(function() {
       //finally transition to home
-      browserHistory.push("/")
+      hashHistory.push("/")
     });
   }
 

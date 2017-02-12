@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react";
-import { browserHistory } from "react-router";
+import { hashHistory } from "react-router";
 import firebase from "firebase";
 import './style.css';
 
@@ -50,9 +50,9 @@ class Login extends Component {
     firebase.auth().signInWithEmailAndPassword(email, pw).then((result)=> {
       var location = component.props.location
       if (location.state && location.state.nextPathname) {
-        browserHistory.push(location.state.nextPathname)
+        hashHistory.push(location.state.nextPathname)
       } else {
-        browserHistory.push("/");
+        hashHistory.push("/");
       }
       // User signed in!
       console.log("User signed in!");
