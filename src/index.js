@@ -12,6 +12,7 @@ import Account from "./components/account";
 import Login from "./components/login-register/login";
 import Logout from "./components/login-register/logout";
 import Register from "./components/login-register/register";
+import { InterestStages } from "./Constants"
 
 if (module.hot) {
   module.hot.accept('./App', () => {
@@ -33,14 +34,6 @@ var config = {
   storageBucket: FirebaseConfig.FIREBASE_STORAGE_BUCKET,
   messagingSenderId: FirebaseConfig.FIREBASE_MESSAGING_SENDER_ID
 };
-
-// var config = {
-//   apiKey: "AIzaSyAckj1NRJSC_1-ndeLERLysW_ylqxVaVfI",
-//   authDomain: "stovetop-eab65.firebaseapp.com",
-//   databaseURL: "https://stovetop-eab65.firebaseio.com",
-//   storageBucket: "stovetop-eab65.appspot.com",
-//   messagingSenderId: "108628706661"
-// };
 
 firebase.initializeApp(config);
 
@@ -75,8 +68,8 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route component={App} path="/">
       <IndexRoute component={Main} onEnter={requireAuth} />
-      <Route component={Archive} path="/archive" onEnter={requireAuth} />
-      <Route component={Habits} path="/habits" onEnter={requireAuth} />
+      <Route component={Archive} path="/archive" onEnter={requireAuth} stage={ InterestStages.ARCHIVE } />
+      <Route component={Habits} path="/habits" onEnter={requireAuth} stage={ InterestStages.HABIT } />
       <Route component={Account} path="/account" onEnter={requireAuth} />
       <Route component={Login} path="/login" />
       <Route component={Logout} path="/logout" />

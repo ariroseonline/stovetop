@@ -15,8 +15,12 @@ class Burner extends Component {
       activeInterest: null
     }
 
+  }
+
+  componentDidMount() {
+
     //listen to firebase changes to any interest's stage, see if it changed to this burner's ID
-    var burnerInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.BURNER[props.burnerId]);
+    var burnerInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.BURNER[this.props.burnerId]);
     burnerInterestRef.on("value", function(snapshot) {
       //should  just unwrap the one
       var interest = null;
@@ -54,9 +58,6 @@ class Burner extends Component {
       stage: InterestStages.BURNER[this.props.burnerId]
     });
 
-
-
-
   }
 
   dropInterestOnBurner(interestId) {
@@ -67,45 +68,44 @@ class Burner extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    // if (nextProps.activeInterestId !== this.props.activeInterestId) {
-    //   //get full firebase interest
-    //   var userInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + nextProps.activeInterestId);
-    //   userInterestRef.once("value", function (snapshot) {
-    //     this.setState({
-    //       activeInterest: snapshot.val()
-    //     })
-    //   }.bind(this));
-    // }
+  renderCanDrop() {
+    return (
+      <div className={this.props.isOver ? "can-drop-burner is-over-burner" : "can-drop-burner"}>
+        {this.props.isOver && !this.state.activeInterest && <div className="burner-action-icon">+</div> }
+        {this.props.isOver && this.state.activeInterest && <div className="burner-action-icon">SWITCH</div>}
+      </div>
+    )
   }
-
   render() {
     return (
-      <div className="burnerSlot">
-        {this.props.connectDropTarget(
-          <div className="burner" style={{
-            backgroundColor: this.props.isOver ? "rgba(0, 255, 0, 1)" : "white"
-          }}>
-            {this.props.isOver && !this.state.activeInterest && <div className="burnerActionIcon">+</div> }
-            {this.props.isOver && this.state.activeInterest && <div className="burnerActionIcon">SWITCH</div>}
+      <div className="burner-slot">
 
-            {/*if interest exists, put Pot there */}
-            { this.state.activeInterest ? <InterestPot data={this.state.activeInterest} /> : null }
+        {this.props.connectDropTarget(
+          <div className="burner">
+            {this.props.canDrop ?
+              this.renderCanDrop()
+              :
+              null
+            }
           </div>
         )}
+
+        {/*if interest exists, put Pot there */}
+        { this.state.activeInterest ? <InterestPot data={this.state.activeInterest} /> : null }
       </div>
     )
   }
 }
 
 const burnerTarget = {
-  // canDrop(props) {
-  //   // if(burner not filled etc etc)
-  //   //if filled put exchange icon?
-  //   // console.log(props)
-  //   debugger
-  //   return true;
-  // },
+  canDrop(props, monitor) {
+    //if the item being dragged is already on the current burner, don't allow dropping actions
+    if(monitor.getItem().stage !== ("burner" + props.burnerId)) {
+      return true;
+    } else {
+      return false;
+    }
+  },
 
   drop(props, monitor, component) {
     var draggedItem = monitor.getItem();

@@ -4,10 +4,10 @@ import {ItemTypes} from "../../Constants"
 import {DragSource} from "react-dnd"
 
 const interestBrickSource = {
-  beginDrag(props) {
+  beginDrag(props, monitor) {
     return {
-      //TODO: put id here to identify the precise interest to help with state when moved
-      interestId: props.data.id
+      interestId: props.data.id,
+      stage: props.data.stage
     };
   }
   //

@@ -1,5 +1,35 @@
-.upNext {
+.up-next {
   display: flex;
   flex-wrap: wrap;
   padding: 10px 0;
+  position: relative;
+}
+
+.up-next-can-drop-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  background: rgba(0, 0, 0, .7);
+  width: 100%;
+  /* flex: 1; */
+  position: absolute;
+  height: 100%;
+  border: 4px dashed white;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
+.up-next-is-over-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  background: rgba(0, 0, 0, .9);
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  border: 4px dashed white;
+  color: white;
+  text-shadow: 2px 2px 2px black;
 }

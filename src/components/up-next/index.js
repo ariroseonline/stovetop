@@ -10,7 +10,9 @@ class UpNext extends Component {
   constructor() {
     super();
     this.state = {}
+  }
 
+  componentDidMount() {
     var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UPNEXT);
     upNextInterestsRef.on("value", function(snapshot) {
       var items = [];
@@ -26,6 +28,12 @@ class UpNext extends Component {
     }.bind(this));
   }
 
+  componentWillUnmount() {
+    var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UPNEXT);
+    upNextInterestsRef.off("value");
+  }
+
+
   dropInterestOnUpNext(interestId) {
     //update dragged firebase interest to up-next stage
     var interestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + interestId);
@@ -34,9 +42,24 @@ class UpNext extends Component {
     });
   }
 
+  renderCanDropMessage() {
+    return (
+      <div className="up-next-can-drop-message">Remove from burner</div>
+    );
+  }
+
+  renderIsOverMessage() {
+    return (
+      <div className="up-next-is-over-message">Remove from burner</div>
+    );
+  }
+
+
   render() {
     return this.props.connectDropTarget(
-      <div className="upNext" style={{opacity: this.props.isOver ? 0.1 : 1}}>
+      <div className="up-next">
+        {this.props.canDrop && !this.props.isOver ? this.renderCanDropMessage() : null}
+        {this.props.isOver ?  this.renderIsOverMessage() : null}
         {this.state.items}
       </div>
     )

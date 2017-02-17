@@ -4,9 +4,15 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #eaeaea;
   height: 15vw;
   display: flex;
   width: 15vw;
   padding: 20px;
+  border: 1px solid #ccc;
+  position: absolute;
 }
+
+.interestPot:hover {
+  border: 1px solid #333;
+}
+
