@@ -7,15 +7,13 @@ export const ItemTypes = {
 
 //dynamically generate burners based on config #
 export const InterestStages = {
-  BURNER: "burner",
+  BURNER: {
+    1: "burner1",
+    2: "burner2",
+    3: "burner3",
+    4: "burner4"
+  },
   UP_NEXT: "up-next",
   ARCHIVE: "archive",
   HABIT: "habit"
-}
-
-export const Burners = {
-  BURNER1: "burner1",
-  BURNER2: "burner2",
-  BURNER3: "burner3",
-  BURNER4: "burner4"
 }

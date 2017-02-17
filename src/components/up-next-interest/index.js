@@ -8,8 +8,7 @@ import InterestCard from "../interest-card";
 const upNextInterestSource = {
   beginDrag(props, monitor) {
     return {
-      interestId: props.data.id,
-      stage: props.data.stage
+      interestId: props.data.id
     };
   }
   //

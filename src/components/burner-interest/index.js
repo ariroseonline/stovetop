@@ -3,7 +3,7 @@ import './style.css';
 import {ItemTypes} from "../../Constants"
 import {DragSource} from "react-dnd"
 
-const interestPotSource = {
+const burnerInterestSource = {
   beginDrag(props) {
     return {
       interestId: props.data.id,
@@ -32,7 +32,7 @@ function collect(connect, monitor) {
   }
 }
 
-class InterestPot extends Component {
+class BurnerInterest extends Component {
 
   componentDidMount() {
     // const img = new Image();
@@ -42,15 +42,15 @@ class InterestPot extends Component {
 
   render() {
     const {connectDragSource, isDragging} = this.props;
-    return connectDragSource(<div className="interestPot" style={{opacity: isDragging ? 0.5 : 1, cursor: "move"}}>
+    return connectDragSource(<div className="burner-interest" style={{opacity: isDragging ? 0.5 : 1, cursor: "move"}}>
       {this.props.data.title}</div>);
   }
 }
 
-InterestPot.propTypes = {
+BurnerInterest.propTypes = {
   data: PropTypes.object,
   connectDragSource: PropTypes.func,
   isDragging: PropTypes.bool
 };
 
-export default DragSource(ItemTypes.BURNER_INTEREST, interestPotSource, collect)(InterestPot);
+export default DragSource(ItemTypes.BURNER_INTEREST, burnerInterestSource, collect)(BurnerInterest);

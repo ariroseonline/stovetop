@@ -1,4 +1,4 @@
-.interestPot {
+.burner-interest {
   font-size: 12px;
   border-radius: 11vw;
   align-items: center;
@@ -12,7 +12,7 @@
   position: absolute;
 }
 
-.interestPot:hover {
+.burner-interest:hover {
   border: 1px solid #333;
 }
 

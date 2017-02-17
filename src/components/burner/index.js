@@ -3,7 +3,7 @@ import './style.css';
 import {ItemTypes} from "../../Constants"
 import {DropTarget} from "react-dnd"
 import firebase from "firebase"
-import {InterestStages, Burners} from "../../Constants"
+import {InterestStages} from "../../Constants"
 import BurnerInterest from "../burner-interest"
 
 class Burner extends Component {
@@ -17,9 +17,8 @@ class Burner extends Component {
   }
 
   componentDidMount() {
-
     //listen to firebase changes to any interest's stage, see if it changed to this burner's ID
-    var burnerInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("burner").equalTo(Burners["BURNER" + this.props.burnerId]);
+    var burnerInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.BURNER[this.props.burnerId]);
     burnerInterestRef.on("value", function(snapshot) {
       //should  just unwrap the one
       var interest = null;
@@ -37,8 +36,7 @@ class Burner extends Component {
     //update dragged firebase interest to correct stage with this burner's Id
     var interestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + interestId);
     interestRef.update({
-      stage: InterestStages.BURNER,
-      burner: Burners["BURNER" + this.props.burnerId]
+      stage: InterestStages.BURNER[this.props.burnerId]
     });
   }
 
@@ -55,8 +53,7 @@ class Burner extends Component {
 
     //update dragged firebase interest to dropped stage with this burner's Id
     draggedInterestRef.update({
-      stage: InterestStages.BURNER[this.props.burnerId],
-      burner: Burner["BURNER" + this.props.burnerId]
+      stage: InterestStages.BURNER[this.props.burnerId]
     });
 
   }
@@ -91,7 +88,7 @@ class Burner extends Component {
           </div>
         )}
 
-        {/*if interest exists, put Pot there */}
+        {/*if interest exists, put BurnerInterest there */}
         { this.state.activeInterest ? <BurnerInterest data={this.state.activeInterest} /> : null }
       </div>
     )
@@ -100,10 +97,15 @@ class Burner extends Component {
 
 const burnerTarget = {
   canDrop(props, monitor) {
+    console.log(monitor.getItem().stage, "burner" + props.burnerId)
+    // return true;
     //if the item being dragged is already on the current burner, don't allow dropping actions
     if(monitor.getItem().stage !== ("burner" + props.burnerId)) {
+      console.log('HI')
       return true;
     } else {
+      console.log('bye')
+
       return false;
     }
   },
