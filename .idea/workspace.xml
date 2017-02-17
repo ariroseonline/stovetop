@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ea467e0-351a-43eb-bbea-c1894c398eb2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/interest-card/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/interest-card/style.css" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/interest/index.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/interest/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/archive/index.js" afterPath="$PROJECT_DIR$/src/components/archive/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/habits/index.js" afterPath="$PROJECT_DIR$/src/components/habits/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interest-brick/index.js" afterPath="$PROJECT_DIR$/src/components/interest-brick/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interest-brick/style.css" afterPath="$PROJECT_DIR$/src/components/interest-brick/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interest-pot/style.css" afterPath="$PROJECT_DIR$/src/components/interest-pot/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/navigation-link/index.js" afterPath="$PROJECT_DIR$/src/components/navigation-link/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/up-next/index.js" afterPath="$PROJECT_DIR$/src/components/up-next/index.js" />
@@ -726,7 +721,7 @@
       <workItem from="1487300101393" duration="1992000" />
       <workItem from="1487302117666" duration="1811000" />
       <workItem from="1487304341898" duration="1708000" />
-      <workItem from="1487307515812" duration="1182000" />
+      <workItem from="1487307515812" duration="1266000" />
     </task>
     <task id="LOCAL-00001" summary="fixed history">
       <created>1486934625997</created>
@@ -742,11 +737,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487303623226</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="dragging and dropping between stages works seamlessly now">
+      <created>1487308776785</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1487308776785</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19594000" />
+    <option name="totallyTimeSpent" value="19678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="23" width="1426" height="873" extended-state="0" />
