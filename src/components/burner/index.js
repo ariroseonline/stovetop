@@ -3,8 +3,8 @@ import './style.css';
 import {ItemTypes} from "../../Constants"
 import {DropTarget} from "react-dnd"
 import firebase from "firebase"
-import {InterestStages} from "../../Constants"
-import InterestPot from "../interest-pot"
+import {InterestStages, Burners} from "../../Constants"
+import BurnerInterest from "../burner-interest"
 
 class Burner extends Component {
 
@@ -14,13 +14,12 @@ class Burner extends Component {
     this.state = {
       activeInterest: null
     }
-
   }
 
   componentDidMount() {
 
     //listen to firebase changes to any interest's stage, see if it changed to this burner's ID
-    var burnerInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.BURNER[this.props.burnerId]);
+    var burnerInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("burner").equalTo(Burners["BURNER" + this.props.burnerId]);
     burnerInterestRef.on("value", function(snapshot) {
       //should  just unwrap the one
       var interest = null;
@@ -38,7 +37,8 @@ class Burner extends Component {
     //update dragged firebase interest to correct stage with this burner's Id
     var interestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + interestId);
     interestRef.update({
-      stage: InterestStages.BURNER[this.props.burnerId]
+      stage: InterestStages.BURNER,
+      burner: Burners["BURNER" + this.props.burnerId]
     });
   }
 
@@ -55,7 +55,8 @@ class Burner extends Component {
 
     //update dragged firebase interest to dropped stage with this burner's Id
     draggedInterestRef.update({
-      stage: InterestStages.BURNER[this.props.burnerId]
+      stage: InterestStages.BURNER[this.props.burnerId],
+      burner: Burner["BURNER" + this.props.burnerId]
     });
 
   }
@@ -91,7 +92,7 @@ class Burner extends Component {
         )}
 
         {/*if interest exists, put Pot there */}
-        { this.state.activeInterest ? <InterestPot data={this.state.activeInterest} /> : null }
+        { this.state.activeInterest ? <BurnerInterest data={this.state.activeInterest} /> : null }
       </div>
     )
   }
@@ -128,5 +129,5 @@ Burner.propTypes = {
   connectDropTarget: PropTypes.func
 };
 
-export default DropTarget([ItemTypes.INTEREST, ItemTypes.FOCUSED_INTEREST], burnerTarget, collect)(Burner);
+export default DropTarget([ItemTypes.UP_NEXT_INTEREST, ItemTypes.BURNER_INTEREST], burnerTarget, collect)(Burner);
 

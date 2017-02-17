@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react"
 import './style.css';
-import InterestBrick from "../interest-brick"
+import UpNextInterest from "../up-next-interest"
 import firebase from "firebase"
 import {InterestStages} from "../../Constants"
 import {DropTarget} from "react-dnd"
@@ -13,14 +13,14 @@ class UpNext extends Component {
   }
 
   componentDidMount() {
-    var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UPNEXT);
+    var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UP_NEXT);
     upNextInterestsRef.on("value", function(snapshot) {
       var items = [];
 
       snapshot.forEach(function(childSnapshot) {
         var childKey = childSnapshot.key;
         var childData = childSnapshot.val();
-        items.push(<InterestBrick key={childKey} data={childData} />)
+        items.push(<UpNextInterest key={childKey} data={childData} />)
       }.bind(this));
 
       this.setState({items: items});
@@ -29,7 +29,7 @@ class UpNext extends Component {
   }
 
   componentWillUnmount() {
-    var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UPNEXT);
+    var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UP_NEXT);
     upNextInterestsRef.off("value");
   }
 
@@ -38,7 +38,7 @@ class UpNext extends Component {
     //update dragged firebase interest to up-next stage
     var interestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + interestId);
     interestRef.update({
-      stage: InterestStages.UPNEXT
+      stage: InterestStages.UP_NEXT
     });
   }
 
@@ -93,4 +93,4 @@ UpNext.propTypes = {
   children: PropTypes.node
 }
 
-export default DropTarget(ItemTypes.FOCUSED_INTEREST, upNextTarget, collect)(UpNext);
+export default DropTarget(ItemTypes.BURNER_INTEREST, upNextTarget, collect)(UpNext);

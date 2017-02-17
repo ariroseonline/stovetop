@@ -5,7 +5,7 @@ import {DragSource} from "react-dnd";
 import Modal from "react-modal";
 import InterestCard from "../interest-card";
 
-const interestBrickSource = {
+const upNextInterestSource = {
   beginDrag(props, monitor) {
     return {
       interestId: props.data.id,
@@ -34,7 +34,7 @@ function collect(connect, monitor) {
   }
 }
 
-class InterestBrick extends Component {
+class UpNextInterest extends Component {
 
   constructor(props) {
     super(props);
@@ -80,10 +80,10 @@ class InterestBrick extends Component {
   }
 }
 
-InterestBrick.propTypes = {
+UpNextInterest.propTypes = {
   data: PropTypes.object,
   connectDragSource: PropTypes.func,
   isDragging: PropTypes.bool
 }
 
-export default DragSource(ItemTypes.INTEREST, interestBrickSource, collect)(InterestBrick);
+export default DragSource(ItemTypes.UP_NEXT_INTEREST, upNextInterestSource, collect)(UpNextInterest);

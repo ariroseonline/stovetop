@@ -53,4 +53,4 @@ InterestPot.propTypes = {
   isDragging: PropTypes.bool
 };
 
-export default DragSource(ItemTypes.FOCUSED_INTEREST, interestPotSource, collect)(InterestPot);
+export default DragSource(ItemTypes.BURNER_INTEREST, interestPotSource, collect)(InterestPot);

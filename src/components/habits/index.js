@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react"
 import './style.css';
 import firebase from "firebase"
 import {InterestStages, ItemTypes} from "../../Constants"
-import InterestBrick from "../interest-brick"
+import HabitInterest from "../habit-interest"
 
 class Habits extends Component {
 
@@ -23,7 +23,7 @@ class Habits extends Component {
       snapshot.forEach(function(childSnapshot) {
         var childKey = childSnapshot.key;
         var childData = childSnapshot.val();
-        items.push(<InterestBrick key={childKey} data={childData} location={this.props.location} />)
+        items.push(<HabitInterest key={childKey} data={childData} location={this.props.location} />)
       }.bind(this));
 
       this.setState({items: items});

@@ -1,5 +1,8 @@
 import React, {Component, PropTypes} from "react"
-import NavigationLink from "../navigation-link";
+import NavLink from "../nav-link";
+import HomeLink from "../nav-links/home-link";
+import ArchiveLink from "../nav-links/archive-link";
+import HabitsLink from "../nav-links/habits-link";
 import './style.css';
 import {Link} from "react-router";
 import { DragDropContext } from "react-dnd";
@@ -10,12 +13,11 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="brand"><Link to="/">{"Stovetop"}</Link></h1>
+        <h1 className="brand"><HomeLink /></h1> {/* stage name UPNEXT Used only for drag-dropping from another page*/}
         <ul className="nav">
-          <NavigationLink path="/" name="Home" stage={InterestStages.UPNEXT} /> {/* Used only for drag-dropping from another page*/}
-          <NavigationLink path="/archive" name="Archive" stage={InterestStages.ARCHIVE} />
-          <NavigationLink path="/habits" name="Habits" stage={InterestStages.HABIT} />
-          <NavigationLink path="/account" name="Account" />
+          <li><ArchiveLink /></li>
+          <li><HabitsLink /></li>
+          <li><Link to="/account">Account</Link></li>
         </ul>
         <div className="content">
          {this.props.children}
