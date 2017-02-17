@@ -128,5 +128,5 @@ Burner.propTypes = {
   connectDropTarget: PropTypes.func
 };
 
-export default DropTarget([ItemTypes.INTEREST, ItemTypes.INTERESTFROMPOT], burnerTarget, collect)(Burner);
+export default DropTarget([ItemTypes.INTEREST, ItemTypes.FOCUSED_INTEREST], burnerTarget, collect)(Burner);
 

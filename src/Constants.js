@@ -1,6 +1,6 @@
 export const ItemTypes = {
   INTEREST: "interest",
-  INTERESTFROMPOT: "interestfrompot"
+  FOCUSED_INTEREST: "focused-interest"
 };
 
 //dynamically generate burners based on config #

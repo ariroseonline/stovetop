@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className="brand"><Link to="/blah">{"Stovetop"}</Link></h1>
+        <h1 className="brand"><Link to="/">{"Stovetop"}</Link></h1>
         <ul className="nav">
           <NavigationLink path="/" name="Home" stage={InterestStages.UPNEXT} /> {/* Used only for drag-dropping from another page*/}
           <NavigationLink path="/archive" name="Archive" stage={InterestStages.ARCHIVE} />

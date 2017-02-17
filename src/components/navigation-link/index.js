@@ -57,5 +57,5 @@ function collect(connect, monitor) {
 }
 
 
-export default DropTarget([ItemTypes.INTEREST, ItemTypes.INTERESTFROMPOT], linkTarget, collect)(NavigationLink);
+export default DropTarget([ItemTypes.INTEREST, ItemTypes.FOCUSED_INTEREST], linkTarget, collect)(NavigationLink);
 

@@ -44,13 +44,13 @@ class UpNext extends Component {
 
   renderCanDropMessage() {
     return (
-      <div className="up-next-can-drop-message">Remove from burner</div>
+      <div className="up-next-can-drop-message">Remove</div>
     );
   }
 
   renderIsOverMessage() {
     return (
-      <div className="up-next-is-over-message">Remove from burner</div>
+      <div className="up-next-is-over-message">Remove</div>
     );
   }
 
@@ -93,4 +93,4 @@ UpNext.propTypes = {
   children: PropTypes.node
 }
 
-export default DropTarget(ItemTypes.INTERESTFROMPOT, upNextTarget, collect)(UpNext);
+export default DropTarget(ItemTypes.FOCUSED_INTEREST, upNextTarget, collect)(UpNext);
