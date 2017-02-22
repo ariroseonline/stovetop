@@ -13,6 +13,8 @@ import Login from "./components/login-register/login";
 import Logout from "./components/login-register/logout";
 import Register from "./components/login-register/register";
 import { InterestStages } from "./Constants"
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+
 
 if (module.hot) {
   module.hot.accept('./App', () => {

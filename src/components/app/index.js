@@ -12,7 +12,7 @@ import {InterestStages} from "../../Constants";
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container-page">
         <h1 className="brand"><HomeLink /></h1> {/* stage name UPNEXT Used only for drag-dropping from another page*/}
         <ul className="nav">
           <li><ArchiveLink /></li>

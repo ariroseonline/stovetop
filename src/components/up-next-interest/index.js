@@ -4,6 +4,7 @@ import {ItemTypes} from "../../Constants";
 import {DragSource} from "react-dnd";
 import Modal from "react-modal";
 import InterestCard from "../interest-card";
+// import { Button } from 'react-bootstrap';
 
 const upNextInterestSource = {
   beginDrag(props, monitor) {
@@ -63,6 +64,7 @@ class UpNextInterest extends Component {
     const {connectDragSource, isDragging} = this.props;
 
     return (
+
       <div className="upNextInterestSlot">
         {connectDragSource(<div onClick={this.handleClick} style={{opacity: isDragging ? 0.5 : 1, cursor: "move"}}
                                 className="upNextInterest">{this.props.data.title}</div>)}

@@ -1,8 +1,21 @@
 import React, {Component, PropTypes} from "react"
 import './style.css';
+import MaterialsList from "../materials-list";
 import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
+import {
+  ListGroup,
+  ListGroupItem,
+  FormGroup,
+  FormControl,
+  HelpBlock,
+  ControlLabel,
+  Row,
+  Col,
+  Button
+} from "react-bootstrap";
 
 class InterestCard extends Component {
+
 
   render() {
 
@@ -16,7 +29,9 @@ class InterestCard extends Component {
             <Tab>Events and Classes</Tab>
           </TabList>
           <TabPanel>
-            MATERIALS!!!
+            <MaterialsList/>
+
+
           </TabPanel>
           <TabPanel>
             PEOPLE!!!

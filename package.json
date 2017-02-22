@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "firebase": "^3.6.9",
     "normalize.css": "^5.0.0",
+    "react-bootstrap": "^0.30.7",
     "react-dnd": "^2.2.3",
     "react-dnd-html5-backend": "^2.2.3",
     "react-modal": "^1.6.5",

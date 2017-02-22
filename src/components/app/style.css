@@ -3,7 +3,7 @@
   padding-left: 20px;
 }
 
-.container {
+.container-page {
   display: flex;
   flex-wrap: wrap;
 }
