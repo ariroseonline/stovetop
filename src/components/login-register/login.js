@@ -26,7 +26,7 @@ class Login extends Component {
         this.context.router.replace("/challenges")
       }
     }).catch((error)=> {
-      console.log("ERROr", error)
+      console.log("Error", error)
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;

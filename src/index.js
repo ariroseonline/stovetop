@@ -41,7 +41,6 @@ firebase.initializeApp(config);
 
 function requireAuth(nextState, replace, callback) {
   firebase.auth().onAuthStateChanged((user) => {
-    console.log(user)
     if (!user) {
       let hasLocalStorageUser = false;
       for (let key in localStorage) {

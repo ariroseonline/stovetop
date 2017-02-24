@@ -97,15 +97,10 @@ class Burner extends Component {
 
 const burnerTarget = {
   canDrop(props, monitor) {
-    console.log(monitor.getItem().stage, "burner" + props.burnerId)
-    // return true;
     //if the item being dragged is already on the current burner, don't allow dropping actions
     if(monitor.getItem().stage !== ("burner" + props.burnerId)) {
-      console.log('HI')
       return true;
     } else {
-      console.log('bye')
-
       return false;
     }
   },
