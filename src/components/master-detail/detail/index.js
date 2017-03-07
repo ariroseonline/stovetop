@@ -24,15 +24,8 @@ class Detail extends Component {
   }
 
   render() {
-
     var {item, itemType} = this.props;
-    var detailTemplate = this.getDetailTemplate(item, itemType);
-
-    return (
-      <div>
-        {detailTemplate}
-      </div>
-    );
+    return this.getDetailTemplate(item, itemType)
   }
 }
 

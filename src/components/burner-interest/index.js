@@ -42,7 +42,7 @@ class BurnerInterest extends Component {
 
   render() {
     const {connectDragSource, isDragging} = this.props;
-    return connectDragSource(<div className="burner-interest" style={{opacity: isDragging ? 0.5 : 1, cursor: "move"}}>
+    return connectDragSource(<div className="burner-interest" style={{opacity: isDragging ? 0.5 : 1, cursor: "pointer"}}>
       {this.props.data.title}</div>);
   }
 }

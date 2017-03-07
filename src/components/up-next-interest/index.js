@@ -65,9 +65,20 @@ class UpNextInterest extends Component {
 
     return (
 
-      <div className="upNextInterestSlot">
-        {connectDragSource(<div onClick={this.handleClick} style={{opacity: isDragging ? 0.5 : 1, cursor: "move"}}
-                                className="upNextInterest">{this.props.data.title}</div>)}
+      <div className="up-next-interest-slot">
+        {connectDragSource(
+          <div onClick={this.handleClick} style={{opacity: isDragging ? 0.5 : 1}}
+                                className="up-next-interest panel panel-default">
+            <div className="panel-heading">
+              <h3 className="panel-title">{this.props.data.title}</h3>
+            </div>
+            <div className="panel-body">
+              Here is the goal
+            </div>
+            <div className="panel-footer">
+              <button className="btn btn-default"><span className="glyphicon glyphicon-option-horizontal"></span></button>
+              </div>
+          </div>)}
 
         <Modal
           isOpen={this.state.showDetails}
@@ -87,4 +98,4 @@ UpNextInterest.propTypes = {
   isDragging: PropTypes.bool
 }
 
-export default DragSource(ItemTypes.UP_NEXT_INTEREST, upNextInterestSource, collect)(UpNextInterest);
+export default DragSource(ItemTypes.UP_NEXT_INTEREST, upNextInterestSource, collect, { dragEffect: "move"})(UpNextInterest);

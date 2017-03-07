@@ -8,8 +8,8 @@ class MaterialDetail extends Component {
   }
 
   render() {
-
     var material = this.props.item;
+    console.log("material", material)
 
     return (
       <form>

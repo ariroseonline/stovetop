@@ -1,11 +1,12 @@
-/*.upNextInterestSlot {*/
-/*flex-basis: 16.6666%;*/
-/*padding: 20px;*/
+.up-next-interest-slot {
+  flex-basis: 16.6666%;
+  padding: 20px;
+}
+
+/*.up-next-interest {*/
+  /*cursor: grab;*/
 /*}*/
 
-/*.upNextInterest {*/
-  /*border: 1px solid black;*/
-  /*text-align: center;*/
-  /*padding: 20px 0;*/
-  /*font-size: 12px;*/
+/*.up-next-interest:active {*/
+  /*cursor: grabbing;*/
 /*}*/

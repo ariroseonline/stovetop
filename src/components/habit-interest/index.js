@@ -63,9 +63,18 @@ class HabitInterest extends Component {
     const {connectDragSource, isDragging} = this.props;
 
     return (
-      <div className="upNextInterestSlot">
-        {connectDragSource(<div onClick={this.handleClick} style={{opacity: isDragging ? 0.5 : 1, cursor: "move"}}
-                                className="upNextInterest">{this.props.data.title}</div>)}
+      <div className="up-next-interest-slot">
+        {connectDragSource(
+          <div onClick={this.handleClick} style={{opacity: isDragging ? 0.5 : 1, cursor: "grabbing"}}
+                                className="up-next-interest panel panel-default">
+            <div className="panel-heading">
+              <h3 className="panel-title">{this.props.data.title}</h3>
+            </div>
+            <div className="panel-body">
+              Here is the goal
+            </div>
+                                </div>
+        )}
 
         <Modal
           isOpen={this.state.showDetails}
