@@ -19,14 +19,16 @@ class Master extends Component {
     var activeItem = this.props.items[0] || {};
     this.state = {
       items: this.props.items,
-      activeItemId: activeItem.id || null
+      activeItemId: activeItem['.key'] || null
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    //not great set up repeating the items part
     if(nextProps.items.length && !this.state.activeItemId) {
       this.setState({
-        activeItemId: nextProps.items[0].id
+        activeItemId: nextProps.items[0]['.key'],
+        items: this.props.items
       })
     }
   }
@@ -45,7 +47,7 @@ class Master extends Component {
   }
 
   render() {
-    var activeItem = this.state.items.find(item => item.id === this.state.activeItemId) || {};
+    var activeItem = this.state.items.find(item => item['.key'] === this.state.activeItemId) || {};
 
     return (
       <Row>
@@ -53,7 +55,7 @@ class Master extends Component {
           <ListGroup>
             {this.state.items.map(function(item){
               return (
-                <ListGroupItem onClick={this.onItemClick.bind(this, item.id)} className={item.id === this.state.activeItemId ? "active" : ""} key={item.name}>
+                <ListGroupItem onClick={this.onItemClick.bind(this, item['.key'])} className={item['.key'] === this.state.activeItemId ? "active" : ""} key={item.name}>
                   <span className={item.type === "book" ? "glyphicon glyphicon-book" : "glyphicon glyphicon-link"}></span>
                   &nbsp; <span className="item-name">{item.name}</span>
                 </ListGroupItem>

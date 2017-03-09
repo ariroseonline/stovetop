@@ -5,6 +5,8 @@ import MasterDetail from "../master-detail/master";
 import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
 import firebase from "firebase";
 import {getRandomId} from "../../Constants";
+import reactMixin from "react-mixin"
+import reactFireMixin from "reactfire"
 
 class InterestCard extends Component {
   constructor(props) {
@@ -18,55 +20,12 @@ class InterestCard extends Component {
   }
 
   componentDidMount() {
-
-    //TODO: THESE COULD BE DRIED UP A LOT
-    //TODO: Make interestId dynamic duh
-    var materialsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests" + "/-KcaX_EbeP821PGfuScx/materials")
-    var peopleRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests" + "/-KcaX_EbeP821PGfuScx/people")
-    var eventsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests" + "/-KcaX_EbeP821PGfuScx/events")
-
-    materialsRef.on("value", function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var materialId = childSnapshot.val();
-        //grab material object and put in array
-        firebase.database().ref("materials").child(materialId).once("value", function(snapshot) {
-          //TODO: this is clunky, and requires updating state after every read firebase callback. Try batching somehow.
-          var newMaterials = this.state.materials;
-          var newMaterial = snapshot.val();
-          newMaterial.id = snapshot.key;
-          newMaterials.push(newMaterial);
-          this.setState({materials: newMaterials});
-        }.bind(this))
-      }.bind(this));
-    }.bind(this));
-
-    peopleRef.on("value", function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var personId = childSnapshot.val();
-        //grab person object and put in array
-        firebase.database().ref("people").child(personId).once("value", function(snapshot) {
-          //TODO: this is clunky, and requires updating state after every read firebase callback. Try batching somehow.
-          var newPeople = this.state.people;
-          var newPerson = snapshot.val();
-          newPerson.id = snapshot.key;
-          newPeople.push(newPerson);
-        }.bind(this))
-      }.bind(this));
-    }.bind(this));
-
-    eventsRef.on("value", function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var eventId = childSnapshot.val();
-        //grab event object and put in array
-        firebase.database().ref("events").child(eventId).once("value", function(snapshot) {
-          //TODO: this is clunky, and requires updating state after every read firebase callback. Try batching somehow.
-          var newEvents = this.state.events;
-          var newEvent = snapshot.val();
-          newEvent.id = snapshot.key;
-          newEvents.push(newEvent);
-        }.bind(this))
-      }.bind(this));
-    }.bind(this));
+    var materialsRef = firebase.database().ref('materials').orderByChild("interest").equalTo(this.props.data['.key']);
+    var peopleRef = firebase.database().ref('people').orderByChild("interest").equalTo(this.props.data['.key']);
+    var eventsRef = firebase.database().ref('events').orderByChild("interest").equalTo(this.props.data['.key']);
+    this.bindAsArray(materialsRef, "materials");
+    this.bindAsArray(peopleRef, "people");
+    this.bindAsArray(eventsRef, "events");
   }
 
   createItem(itemType) {
@@ -102,10 +61,10 @@ class InterestCard extends Component {
             <MasterDetail items={this.state.materials} itemType={"materials"} createItem={this.createItem.bind(this)} saveItem={this.saveItem.bind(this)} />
           </TabPanel>
           <TabPanel>
-            {/*<MasterDetail items={this.state.people} itemType={"people"} createItem={this.createItem.bind(this)} saveItem={this.saveItem.bind(this)} />*/}
+            <MasterDetail items={this.state.people} itemType={"people"} createItem={this.createItem.bind(this)} saveItem={this.saveItem.bind(this)} />
           </TabPanel>
           <TabPanel>
-            {/*<MasterDetail items={this.state.events} itemType={"events"} createItem={this.createItem.bind(this)} saveItem={this.saveItem.bind(this)} />*/}
+            <MasterDetail items={this.state.events} itemType={"events"} createItem={this.createItem.bind(this)} saveItem={this.saveItem.bind(this)} />
           </TabPanel>
         </Tabs>
       </div>
@@ -116,5 +75,7 @@ class InterestCard extends Component {
 InterestCard.propTypes = {
   data: PropTypes.object
 }
+
+reactMixin(InterestCard.prototype, reactFireMixin)
 
 export default InterestCard;

@@ -23,8 +23,8 @@ class App extends Component {
   componentDidMount() {
     var userInterestsRef = firebase.database().ref('interests').orderByChild("user").equalTo(firebase.auth().currentUser.uid);
     this.bindAsArray(userInterestsRef, "userInterests");
-
   }
+
   assignInterestToStage(draggedInterestKey, stage) {
     this.firebaseRefs.userInterests.child(draggedInterestKey).update({ stage: stage });
   }
