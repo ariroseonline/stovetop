@@ -5,7 +5,7 @@ import firebase from "firebase"
 import {InterestStages} from "../../Constants"
 import {DropTarget} from "react-dnd"
 import {ItemTypes} from "../../Constants"
-
+import Interest from "../interest";
 
 class UpNext extends Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class UpNext extends Component {
 
   renderUpNextInterests() {
     return this.props.userInterests.filter((interest) => interest.stage === InterestStages.UP_NEXT).map((upNextInterest, i) => {
-      return <DraggableInterest key={"up-next-interest-" + i} data={upNextInterest} draggableItemType={ItemTypes.UP_NEXT_INTEREST} />
+      return <DraggableInterest key={"up-next-interest-" + i} data={upNextInterest} draggableItemType={ItemTypes.UP_NEXT_INTEREST} displayComponent={Interest} showModal={this.props.showModal} />
     })
   }
 
@@ -91,7 +91,8 @@ function collect(connect, monitor) {
 UpNext.propTypes = {
   children: PropTypes.node,
   interests: PropTypes.array,
-  assignInterestToUpNext: PropTypes.func
+  assignInterestToUpNext: PropTypes.func,
+  showModal: PropTypes.func
 }
 
 

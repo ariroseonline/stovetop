@@ -6,22 +6,21 @@ import draggableInterestSource from "./source";
 import draggableInterestCollect from "./collect";
 import Modal from "react-modal";
 import InterestCard from "../interest-card";
+// import Interest from "../interest";
 // import { Button } from 'react-bootstrap';
-import Interest from "../interest";
 
 class DraggableInterest extends Component {
   render() {
+    var displayComponent = this.props.displayComponent;
     return (
-      <div>
-        {React.createElement(DragSource(this.props.draggableItemType, draggableInterestSource, draggableInterestCollect, { dragEffect: "move"})(Interest), {...this.props})}
-      </div>
+      React.createElement(DragSource(this.props.draggableItemType, draggableInterestSource, draggableInterestCollect, { dragEffect: "move"})(displayComponent), {...this.props})
     )
   }
 }
 
 DraggableInterest.propTypes = {
-  draggableItemType: PropTypes.string
+  draggableItemType: PropTypes.string,
+  displayComponent: PropTypes.func
 }
 
-// export default DragSource(this.props.draggableItemTypes, draggableInterestSource, draggableInterestCollect, { dragEffect: "move"})(Interest);
 export default DraggableInterest;

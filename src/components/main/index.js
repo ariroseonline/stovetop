@@ -35,7 +35,7 @@ class Main extends Component {
     return (
         <div className="main">
           <Burners userInterests={this.props.userInterests} assignInterestToStage={this.props.assignInterestToStage.bind(this)} swapInterestStages={this.props.swapInterestStages.bind(this)} />
-          <UpNext userInterests={this.props.userInterests} assignInterestToUpNext={this.props.assignInterestToStage.bind(this)} />
+          <UpNext userInterests={this.props.userInterests} assignInterestToUpNext={this.props.assignInterestToStage.bind(this)} showModal={this.props.showModal} />
         </div>
     )
   }
@@ -45,7 +45,8 @@ Main.propTypes = {
   children: PropTypes.node,
   userInterests: PropTypes.array,
   assignInterestToStage: PropTypes.func,
-  swapInterestStages: PropTypes.func
+  swapInterestStages: PropTypes.func,
+  showModal: PropTypes.func
 }
 
 // reactMixin(Main.prototype, reactFireMixin)

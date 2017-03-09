@@ -5,6 +5,7 @@ import {DropTarget} from "react-dnd"
 import firebase from "firebase"
 import {InterestStages} from "../../Constants"
 import BurnerInterest from "../burner-interest"
+import DraggableInterest from "../draggable-interest"
 import _ from "lodash";
 
 class Burner extends Component {
@@ -40,7 +41,7 @@ class Burner extends Component {
         )}
 
         {/*if interest exists, put BurnerInterest there */}
-        { this.props.interest ? <BurnerInterest data={this.props.interest} /> : null }
+        { this.props.interest ? <DraggableInterest key={"burner-interest-" + this.props.stage} data={this.props.interest} draggableItemType={ItemTypes.BURNER_INTEREST} displayComponent={BurnerInterest} showModal={this.props.showModal} /> : null }
       </div>
     )
   }

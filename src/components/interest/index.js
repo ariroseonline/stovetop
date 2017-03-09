@@ -2,27 +2,13 @@ import React, {Component, PropTypes} from "react";
 import './style.css';
 import {ItemTypes} from "../../Constants";
 import {DragSource} from "react-dnd";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import InterestCard from "../interest-card";
 
 class Interest extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      showDetails: false
-    }
-
-  }
-
   handleClick = (e) => {
-    this.setState({
-      showDetails: true
-    })
-  }
-
-  closeModal = (e) => {
-    this.setState({showDetails: false});
+    this.props.showModal(<InterestCard data={this.props.data}/>)
   }
 
   render() {
@@ -46,13 +32,6 @@ class Interest extends Component {
             </div>
           </div>)}
 
-        <Modal
-          isOpen={this.state.showDetails}
-          onRequestClose={this.closeModal}
-          contentLabel="Interest Details"
-        >
-          <InterestCard data={this.props.data}/>
-        </Modal>
       </div>
     )
   }
@@ -61,7 +40,8 @@ class Interest extends Component {
 Interest.propTypes = {
   data: PropTypes.object,
   connectDragSource: PropTypes.func,
-  isDragging: PropTypes.bool
+  isDragging: PropTypes.bool,
+  showModal: PropTypes.func
 }
 
 export default Interest;

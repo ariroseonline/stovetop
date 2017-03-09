@@ -3,13 +3,14 @@ import './style.css';
 import firebase from "firebase"
 import {InterestStages, ItemTypes} from "../../Constants"
 import DraggableInterest from "../draggable-interest"
+import Interest from "../interest";
 
 class Archive extends Component {
 
 
   renderArchiveInterests() {
     return this.props.userInterests.filter((interest) => interest.stage === InterestStages.ARCHIVE).map((archiveInterest, i) => {
-      return <DraggableInterest key={"archive-interest-" + i} data={archiveInterest} draggableItemType={ItemTypes.ARCHIVE_INTEREST} />
+      return <DraggableInterest key={"archive-interest-" + i} data={archiveInterest} draggableItemType={ItemTypes.ARCHIVE_INTEREST} displayComponent={Interest} showModal={this.props.showModal} />
     })
   }
 
