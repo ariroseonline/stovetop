@@ -6,40 +6,34 @@ import {InterestStages} from "../../Constants"
 import {DropTarget} from "react-dnd"
 import {ItemTypes} from "../../Constants"
 
+
 class UpNext extends Component {
-  constructor() {
+  constructor(props) {
     super();
-    this.state = {}
+    this.state = {
+      interests: []
+    }
   }
-
-  componentDidMount() {
-    var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UP_NEXT);
-    upNextInterestsRef.on("value", function(snapshot) {
-      var items = [];
-
-      snapshot.forEach(function(childSnapshot) {
-        var childKey = childSnapshot.key;
-        var childData = childSnapshot.val();
-        items.push(<UpNextInterest key={childKey} data={childData} />)
-      }.bind(this));
-
-      this.setState({items: items});
-
-    }.bind(this));
-  }
-
-  componentWillUnmount() {
-    var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UP_NEXT);
-    upNextInterestsRef.off("value");
-  }
+  //
+  // componentDidMount() {
+  //   var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UP_NEXT);
+  //   upNextInterestsRef.on("value", function(snapshot) {
+  //     var items = [];
+  //
+  //     snapshot.forEach(function(childSnapshot) {
+  //       var childKey = childSnapshot.key;
+  //       var childData = childSnapshot.val();
+  //       items.push(<UpNextInterest key={childKey} data={childData} />)
+  //     }.bind(this));
+  //
+  //     this.setState({items: items});
+  //
+  //   }.bind(this));
+  // }
 
 
-  dropInterestOnUpNext(interestId) {
-    //update dragged firebase interest to up-next stage
-    var interestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + interestId);
-    interestRef.update({
-      stage: InterestStages.UP_NEXT
-    });
+  dropInterestOnUpNext(interestKey, stage) {
+    this.props.assignInterestToUpNext(interestKey, InterestStages.UP_NEXT);
   }
 
   renderCanDropMessage() {
@@ -54,13 +48,18 @@ class UpNext extends Component {
     );
   }
 
+  renderUpNextInterests() {
+    return this.props.userInterests.filter((interest) => interest.stage === InterestStages.UP_NEXT).map((upNextInterest, i) => {
+      return <UpNextInterest key={"up-next-interest-" + i} data={upNextInterest} />
+    })
+  }
 
   render() {
     return this.props.connectDropTarget(
       <div className="up-next">
         {this.props.canDrop && !this.props.isOver ? this.renderCanDropMessage() : null}
         {this.props.isOver ?  this.renderIsOverMessage() : null}
-        {this.state.items}
+        {this.renderUpNextInterests()}
       </div>
     )
   }
@@ -77,7 +76,7 @@ const upNextTarget = {
 
   drop(props, monitor, component) {
     var draggedItem = monitor.getItem();
-    component.dropInterestOnUpNext(draggedItem.interestId)
+    component.dropInterestOnUpNext(draggedItem.interestKey)
   }
 };
 
@@ -90,7 +89,10 @@ function collect(connect, monitor) {
 }
 
 UpNext.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  interests: PropTypes.array,
+  assignInterestToUpNext: PropTypes.func
 }
+
 
 export default DropTarget(ItemTypes.BURNER_INTEREST, upNextTarget, collect)(UpNext);

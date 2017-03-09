@@ -4,6 +4,7 @@ import './style.css';
 import MasterDetail from "../master-detail/master";
 import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
 import firebase from "firebase";
+import {getRandomId} from "../../Constants";
 
 class InterestCard extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class InterestCard extends Component {
   componentDidMount() {
 
     //TODO: THESE COULD BE DRIED UP A LOT
+    //TODO: Make interestId dynamic duh
     var materialsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests" + "/-KcaX_EbeP821PGfuScx/materials")
     var peopleRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests" + "/-KcaX_EbeP821PGfuScx/people")
     var eventsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests" + "/-KcaX_EbeP821PGfuScx/events")
@@ -67,6 +69,23 @@ class InterestCard extends Component {
     }.bind(this));
   }
 
+  createItem(itemType) {
+    var newState = this.state;
+    var newId = getRandomId(20);
+    //push a blank new record
+    newState[itemType].push({
+      id: newId,
+      name: "New Item"
+    });
+
+    this.setState(newState);
+    return newId;
+  }
+
+  saveItem(itemType) {
+
+  }
+
 
   render() {
 
@@ -80,13 +99,13 @@ class InterestCard extends Component {
             <Tab>Events and Classes</Tab>
           </TabList>
           <TabPanel>
-            <MasterDetail items={this.state.materials} itemType={"material"}/>
+            <MasterDetail items={this.state.materials} itemType={"materials"} createItem={this.createItem.bind(this)} saveItem={this.saveItem.bind(this)} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.state.people} itemType={"person"} />
+            {/*<MasterDetail items={this.state.people} itemType={"people"} createItem={this.createItem.bind(this)} saveItem={this.saveItem.bind(this)} />*/}
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.state.events} itemType={"event"} />
+            {/*<MasterDetail items={this.state.events} itemType={"events"} createItem={this.createItem.bind(this)} saveItem={this.saveItem.bind(this)} />*/}
           </TabPanel>
         </Tabs>
       </div>

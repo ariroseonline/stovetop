@@ -36,10 +36,12 @@ class Master extends Component {
   }
 
   onAddItemClick() {
-    var newItems = this.state.items.push({
+    var newItemId = this.props.createItem(this.props.itemType);
+    this.setState({ activeItemId : newItemId, newItemMode: true });
+  }
 
-    })
-    this.setState({ items : newItems });
+  saveItem() {
+    this.props.saveItem(this.props.itemType);
   }
 
   render() {
@@ -58,10 +60,10 @@ class Master extends Component {
               )
             }.bind(this))}
           </ListGroup>
-          <Button block onClick={this.onAddItemClick}>Add New Material</Button>
+          <Button block onClick={this.onAddItemClick.bind(this)}>Add New Item</Button>
         </Col>
         <Col xs={9}>
-          <Detail item={activeItem} itemType={this.props.itemType}/>
+          <Detail item={activeItem} itemType={this.props.itemType} newItemMode={this.state.newItemMode} />
         </Col>
       </Row>
     )
@@ -70,7 +72,9 @@ class Master extends Component {
 
 Master.propTypes = {
   items: PropTypes.array,
-  type: PropTypes.string
+  type: PropTypes.string,
+  createItem: PropTypes.func,
+  saveItem: PropTypes.func
 }
 
 export default Master;

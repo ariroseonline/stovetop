@@ -67,7 +67,7 @@ function requireAuth(nextState, replace, callback) {
 
 ReactDOM.render((
   <Router history={hashHistory}>
-    <Route component={App} path="/">
+    <Route component={App} path="/" >
       <IndexRoute component={Main} onEnter={requireAuth} />
       <Route component={Archive} path="/archive" onEnter={requireAuth} stage={ InterestStages.ARCHIVE } />
       <Route component={Habits} path="/habits" onEnter={requireAuth} stage={ InterestStages.HABIT } />

@@ -3,56 +3,34 @@ import Burner from "../burner"
 import './style.css';
 import firebase from "firebase"
 import {InterestStages} from "../../Constants"
+import reactMixin from "react-mixin"
+import reactFireMixin from "reactfire"
 
 class Burners extends Component {
 
-  constructor () {
-    super();
-    this.state = {
-      burnerCount: [{}, {}, {}, {}],
-      burnerInterestId1: null,
-      burnerInterestId2: null,
-      burnerInterestId3: null,
-      burnerInterestId4: null
-    }
-
-    // var userInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.BURNER);
-    //
-    // var newBurners = [];
-    // userInterestsRef.once("value", function(snapshot) {
-    //   var i = 1;
-    //   snapshot.forEach(function(childSnapshot) {
-    //     var childKey = childSnapshot.key;
-    //     var childData = childSnapshot.val();
-    //     var newState = {};
-    //     newState["burnerInterestId" + i] = childKey;
-    //     this.setState(newState);
-    //     i++;
-    //   );
-    //
-    // }.bind(this));
+  getBurnerInterest(burnerId) {
+    return this.props.userInterests.find((interest)=>interest.stage=== InterestStages.BURNER[burnerId])
   }
 
-
-
-//   activeInterestId={this.state.burnerInterestId1}
-// activeInterestId={this.state.burnerInterestId2}
-// activeInterestId={this.state.burnerInterestId3}
-// activeInterestId={this.state.burnerInterestId4}
   render() {
     return (
       <div className="burners">
-        <Burner burnerId={1} key={"burner1"}/>
-        <Burner burnerId={2} key={"burner2"}/>
-        <Burner burnerId={3} key={"burner3"}/>
-        <Burner burnerId={4} key={"burner4"}/>
+        <Burner stage={"burner1"} key={"burner1"} interest={this.getBurnerInterest(1)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} />
+        <Burner stage={"burner2"} key={"burner2"} interest={this.getBurnerInterest(2)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} />
+        <Burner stage={"burner3"} key={"burner3"} interest={this.getBurnerInterest(3)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} />
+        <Burner stage={"burner4"} key={"burner4"} interest={this.getBurnerInterest(4)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} />
       </div>
     )
   }
 }
 
 Burners.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  userInterests: PropTypes.array,
+  assignInterestToStage: PropTypes.func,
+  swapInterestStages: PropTypes.func
 }
+
+reactMixin(Burners.prototype, reactFireMixin)
 
 export default Burners

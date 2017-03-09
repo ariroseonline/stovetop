@@ -11,13 +11,13 @@ class Detail extends Component {
 
   getDetailTemplate(item, itemType) {
     switch(itemType) {
-      case "material":
+      case "materials":
         return <MaterialDetail item={item}/>;
         break;
-      case "person":
+      case "people":
         return <PersonDetail item={item}/>;
         break;
-      case "event":
+      case "events":
         return <EventDetail item={item}/>;
         break;
     }

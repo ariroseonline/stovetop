@@ -6,7 +6,7 @@ import {DragSource} from "react-dnd"
 const burnerInterestSource = {
   beginDrag(props) {
     return {
-      interestId: props.data.id,
+      interestKey: props.data['.key'],
       stage: props.data.stage
     };
   }

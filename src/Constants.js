@@ -17,3 +17,16 @@ export const InterestStages = {
   ARCHIVE: "archive",
   HABIT: "habit"
 }
+
+
+export const getRandomId = function (length) {
+  var x = 0;
+  var multiplier = "9";
+  var adder = "1";
+  while(x < length - 1) {
+    multiplier += "0";
+    adder += "0";
+    x++;
+  }
+  return Math.floor(Math.random()*parseInt(multiplier)) + parseInt(adder) ;
+}

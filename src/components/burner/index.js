@@ -5,72 +5,23 @@ import {DropTarget} from "react-dnd"
 import firebase from "firebase"
 import {InterestStages} from "../../Constants"
 import BurnerInterest from "../burner-interest"
+import _ from "lodash";
 
 class Burner extends Component {
 
-  constructor(props) {
-    super();
-
-    this.state = {
-      activeInterest: null
-    }
-  }
-
-  componentDidMount() {
-    //listen to firebase changes to any interest's stage, see if it changed to this burner's ID
-    var burnerInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.BURNER[this.props.burnerId]);
-    burnerInterestRef.on("value", function(snapshot) {
-      //should  just unwrap the one
-      var interest = null;
-      snapshot.forEach(function(childSnapshot) {
-        interest = childSnapshot.val();
-      });
-
-      //put full interest data into burner state
-      this.setState({ activeInterest: interest });
-
-    }.bind(this));
-  }
-
-  addInterest(interestId) {
-    //update dragged firebase interest to correct stage with this burner's Id
-    var interestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + interestId);
-    interestRef.update({
-      stage: InterestStages.BURNER[this.props.burnerId]
-    });
-  }
-
-  swapInterest(currentInterestId, draggedInterestId) {
-    //get current firebase interest on burner. update it to use whatever the dragged item came from  (burner2, burner3, up-next, etc)
-    var currentInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + currentInterestId);
-    var draggedInterestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + draggedInterestId);
-
-    draggedInterestRef.once("value", function(snapshot){
-      currentInterestRef.update({
-        stage: snapshot.val().stage
-      });
-    });
-
-    //update dragged firebase interest to dropped stage with this burner's Id
-    draggedInterestRef.update({
-      stage: InterestStages.BURNER[this.props.burnerId]
-    });
-
-  }
-
-  dropInterestOnBurner(interestId) {
-    if (this.state.activeInterest) { //if burner has something, do swap operation
-      this.swapInterest(this.state.activeInterest.id, interestId);
+  dropInterestOnBurner(interestKey, fromBurnerStage) {
+    if (this.props.interest) { //if burner has something, do swap operation
+      this.props.swapBurnerInterests(this.props.stage, fromBurnerStage, this.props.interest['.key'], interestKey);
     } else { //just add to empty burner
-      this.addInterest(interestId)
+      this.props.assignInterestToBurner(interestKey, this.props.stage);
     }
   }
 
   renderCanDrop() {
     return (
       <div className={this.props.isOver ? "can-drop-burner is-over-burner" : "can-drop-burner"}>
-        {this.props.isOver && !this.state.activeInterest && <div className="burner-action-icon">+</div> }
-        {this.props.isOver && this.state.activeInterest && <div className="burner-action-icon">SWITCH</div>}
+        {this.props.isOver && !this.props.interest && <div className="burner-action-icon">+</div> }
+        {this.props.isOver && this.props.interest && <div className="burner-action-icon">SWITCH</div>}
       </div>
     )
   }
@@ -89,7 +40,7 @@ class Burner extends Component {
         )}
 
         {/*if interest exists, put BurnerInterest there */}
-        { this.state.activeInterest ? <BurnerInterest data={this.state.activeInterest} /> : null }
+        { this.props.interest ? <BurnerInterest data={this.props.interest} /> : null }
       </div>
     )
   }
@@ -98,7 +49,7 @@ class Burner extends Component {
 const burnerTarget = {
   canDrop(props, monitor) {
     //if the item being dragged is already on the current burner, don't allow dropping actions
-    if(monitor.getItem().stage !== ("burner" + props.burnerId)) {
+    if(monitor.getItem().stage !== (props.stage)) {
       return true;
     } else {
       return false;
@@ -107,7 +58,7 @@ const burnerTarget = {
 
   drop(props, monitor, component) {
     var draggedItem = monitor.getItem();
-    component.dropInterestOnBurner(draggedItem.interestId)
+    component.dropInterestOnBurner(draggedItem.interestKey, draggedItem.stage)
   }
 };
 
@@ -120,11 +71,14 @@ function collect(connect, monitor) {
 }
 
 Burner.propTypes = {
-  burnerId: PropTypes.number,
-  // activeInterestId: PropTypes.string,
+  stage: PropTypes.string,
+  interest: PropTypes.object,
+  swapBurnerInterests: PropTypes.func,
+  assignInterestToBurner: PropTypes.func,
   isOver: PropTypes.bool.isRequired,
   connectDropTarget: PropTypes.func
 };
+
 
 export default DropTarget([ItemTypes.UP_NEXT_INTEREST, ItemTypes.BURNER_INTEREST], burnerTarget, collect)(Burner);
 
