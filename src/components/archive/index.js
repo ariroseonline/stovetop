@@ -6,58 +6,26 @@ import ArchiveInterest from "../archive-interest"
 
 class Archive extends Component {
 
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      items: []
-    }
+  renderArchiveInterests() {
+    return this.props.userInterests.filter((interest) => interest.stage === InterestStages.ARCHIVE).map((archiveInterest, i) => {
+      return <ArchiveInterest key={"archive-interest-" + i} data={archiveInterest} />
+    })
   }
 
-  componentDidMount() {
-    //potentially reusable with UPNEXT interests list, and HABITS interests list
-    var archiveInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.ARCHIVE);
-    archiveInterestsRef.on("value", function(snapshot) {
-      var items = [];
-
-      snapshot.forEach(function(childSnapshot) {
-        var childKey = childSnapshot.key;
-        var childData = childSnapshot.val();
-        items.push(<ArchiveInterest key={childKey} data={childData} />)
-      }.bind(this));
-
-      this.setState({items: items});
-
-    }.bind(this));
-  }
-
-  componentWillUnmount() {
-    var archiveInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.ARCHIVE);
-    archiveInterestsRef.off("value", function(snapshot) {
-      var items = [];
-
-      snapshot.forEach(function(childSnapshot) {
-        var childKey = childSnapshot.key;
-        var childData = childSnapshot.val();
-        items.push(<ArchiveInterest key={childKey} data={childData} location={this.props.location} />)
-      }.bind(this));
-
-      this.setState({items: items});
-
-    }.bind(this));
-  }
 
   render() {
     return (
         <div>
-          {this.state.items}
+          {this.renderArchiveInterests()}
         </div>
     )
   }
 }
 
 Archive.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  userInterests: PropTypes.array
 }
 
 export default Archive

@@ -8,7 +8,7 @@ import InterestCard from "../interest-card";
 const archiveInterestSource = {
   beginDrag(props, monitor) {
     return {
-      interestId: props.data.id
+      interestKey: props.data['.key']
     };
   }
   //

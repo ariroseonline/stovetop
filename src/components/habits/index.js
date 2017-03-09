@@ -6,42 +6,26 @@ import HabitInterest from "../habit-interest"
 
 class Habits extends Component {
 
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      items: []
-    }
+  renderHabitInterests() {
+    return this.props.userInterests.filter((interest) => interest.stage === InterestStages.HABIT).map((habitInterest, i) => {
+      return <HabitInterest key={"habit-interest-" + i} data={habitInterest} />
+    })
   }
 
-  componentDidMount() {
-    //potentially reusable with UPNEXT interests list, and HABITS interests list
-    var archiveInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.HABIT);
-    archiveInterestsRef.on("value", function(snapshot) {
-      var items = [];
-
-      snapshot.forEach(function(childSnapshot) {
-        var childKey = childSnapshot.key;
-        var childData = childSnapshot.val();
-        items.push(<HabitInterest key={childKey} data={childData} location={this.props.location} />)
-      }.bind(this));
-
-      this.setState({items: items});
-
-    }.bind(this));
-  }
 
   render() {
     return (
       <div>
-        {this.state.items}
+        {this.renderHabitInterests()}
       </div>
     )
   }
 }
 
 Habits.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  userInterests: PropTypes.array
 }
 
 export default Habits

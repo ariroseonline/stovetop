@@ -9,42 +9,45 @@ import {InterestStages} from "../../Constants"
 
 class Main extends Component {
 
-  constructor(props) {
-    super();
-    this.state = {
-      userInterests: []
-    }
-  }
+  // constructor(props) {
+  //   super();
+  //   this.state = {
+  //     userInterests: []
+  //   }
+  // }
 
-  componentDidMount() {
+  //{/*componentDidMount() {*/}
 
-    var userInterestsRef = firebase.database().ref('interests').orderByChild("user").equalTo(firebase.auth().currentUser.uid);
-    this.bindAsArray(userInterestsRef, "userInterests");
-
-  }
-  assignInterestToStage(draggedInterestKey, stage) {
-    this.firebaseRefs.userInterests.child(draggedInterestKey).update({ stage: stage });
-  }
-
-  swapInterestStages(toStage, fromStage,  currentInterestKey, draggedInterestKey) {
-    this.firebaseRefs.userInterests.child(currentInterestKey).update({ stage: fromStage });
-    this.firebaseRefs.userInterests.child(draggedInterestKey).update({ stage: toStage });
-  }
+  //   var userInterestsRef = firebase.database().ref('interests').orderByChild("user").equalTo(firebase.auth().currentUser.uid);
+  //   this.bindAsArray(userInterestsRef, "userInterests");
+  //
+  // }
+  // assignInterestToStage(draggedInterestKey, stage) {
+  //   this.firebaseRefs.userInterests.child(draggedInterestKey).update({ stage: stage });
+  // }
+  //
+  // swapInterestStages(toStage, fromStage,  currentInterestKey, draggedInterestKey) {
+  //   this.firebaseRefs.userInterests.child(currentInterestKey).update({ stage: fromStage });
+  //   this.firebaseRefs.userInterests.child(draggedInterestKey).update({ stage: toStage });
+  // }
 
   render() {
     return (
         <div className="main">
-          <Burners userInterests={this.state.userInterests} assignInterestToStage={this.assignInterestToStage.bind(this)} swapInterestStages={this.swapInterestStages.bind(this)} />
-          <UpNext userInterests={this.state.userInterests} assignInterestToUpNext={this.assignInterestToStage.bind(this)} />
+          <Burners userInterests={this.props.userInterests} assignInterestToStage={this.props.assignInterestToStage.bind(this)} swapInterestStages={this.props.swapInterestStages.bind(this)} />
+          <UpNext userInterests={this.props.userInterests} assignInterestToUpNext={this.props.assignInterestToStage.bind(this)} />
         </div>
     )
   }
 }
 
 Main.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  userInterests: PropTypes.array,
+  assignInterestToStage: PropTypes.func,
+  swapInterestStages: PropTypes.func
 }
 
-reactMixin(Main.prototype, reactFireMixin)
+// reactMixin(Main.prototype, reactFireMixin)
 
 export default Main

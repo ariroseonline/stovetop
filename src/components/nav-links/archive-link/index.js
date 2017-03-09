@@ -16,20 +16,17 @@ class ArchiveLink extends Component {
 
   }
 
-  dropInterestOnLink(interestId) {
-
+  dropInterestOnLink(interestKey) {
+    this.props.assignInterestToStage(interestKey, InterestStages.ARCHIVE);
     //TODO: potentially reusable with other instances of updating an interest
-    //update dragged firebase interest to stage of link
-    var interestRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests/" + interestId);
-    interestRef.update({
-      stage: InterestStages.ARCHIVE
-    });
   }
+
 }
 
 ArchiveLink.propTypes = {
   path: PropTypes.string,
-  name: PropTypes.string
+  name: PropTypes.string,
+  assignInterestToStage: PropTypes.func
 }
 
 
@@ -40,7 +37,7 @@ const linkTarget = {
 
   drop(props, monitor, component) {
     var draggedItem = monitor.getItem();
-    component.dropInterestOnLink(draggedItem.interestId, props.stage)
+    component.dropInterestOnLink(draggedItem.interestKey, props.stage)
   }
 };
 

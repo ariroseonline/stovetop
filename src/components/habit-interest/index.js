@@ -7,8 +7,9 @@ import InterestCard from "../interest-card";
 
 const habitInterestSource = {
   beginDrag(props, monitor) {
+    console.log("BEGIN DRAG", props)
     return {
-      interestId: props.data.id
+      interestKey: props.data['.key']
     };
   }
   //
