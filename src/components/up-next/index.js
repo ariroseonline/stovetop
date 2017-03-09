@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react"
 import './style.css';
-import UpNextInterest from "../up-next-interest"
+import DraggableInterest from "../draggable-interest";
 import firebase from "firebase"
 import {InterestStages} from "../../Constants"
 import {DropTarget} from "react-dnd"
@@ -50,7 +50,7 @@ class UpNext extends Component {
 
   renderUpNextInterests() {
     return this.props.userInterests.filter((interest) => interest.stage === InterestStages.UP_NEXT).map((upNextInterest, i) => {
-      return <UpNextInterest key={"up-next-interest-" + i} data={upNextInterest} />
+      return <DraggableInterest key={"up-next-interest-" + i} data={upNextInterest} draggableItemType={ItemTypes.UP_NEXT_INTEREST} />
     })
   }
 
