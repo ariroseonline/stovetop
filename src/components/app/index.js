@@ -12,6 +12,7 @@ import firebase from "firebase"
 import reactMixin from "react-mixin"
 import reactFireMixin from "reactfire"
 import Modal from "react-modal";
+import InterestCard from "../interest-card";
 
 class App extends Component {
 
@@ -29,7 +30,10 @@ class App extends Component {
   }
 
   createInterest() {
-
+    this.setState({
+      modalContent: <InterestCard data={{}} newInterestMode={true} saveInterestMetadata={this.saveInterestMetadata} />,
+      showModal: true
+    })
   }
 
   assignInterestToStage(draggedInterestKey, stage) {
@@ -39,6 +43,22 @@ class App extends Component {
   swapInterestStages(toStage, fromStage, currentInterestKey, draggedInterestKey) {
     this.firebaseRefs.userInterests.child(currentInterestKey).update({stage: fromStage});
     this.firebaseRefs.userInterests.child(draggedInterestKey).update({stage: toStage});
+  }
+
+  saveInterestMetadata(shouldCreate, newData, interestKey) {
+
+    //firebase create
+    if(shouldCreate) {
+      newData.user = firebase.auth().currentUser.uid;
+      newData.stage = InterestStages.UP_NEXT;
+      //fixes bug where this.firebaseRefs.userInterests doesn't work for some reason in this  condition
+      var userInterestsRef = firebase.database().ref('interests');
+      userInterestsRef.push(newData);
+    } else {
+      //or just update existing interest
+      this.firebaseRefs.userInterests.child(interestKey).update(newData);
+    }
+
   }
 
   showModal(el) {
@@ -69,7 +89,8 @@ class App extends Component {
               userInterests: this.state.userInterests,
               assignInterestToStage: this.assignInterestToStage.bind(this),
               swapInterestStages: this.swapInterestStages.bind(this),
-              showModal: this.showModal.bind(this)
+              showModal: this.showModal.bind(this),
+              saveInterestMetadata: this.saveInterestMetadata.bind(this)
             })
           )}
 

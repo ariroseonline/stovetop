@@ -9,7 +9,7 @@ class Habits extends Component {
 
   renderHabitInterests() {
     return this.props.userInterests.filter((interest) => interest.stage === InterestStages.HABIT).map((habitInterest, i) => {
-      return <DraggableInterest key={"habit-interest-" + i} data={habitInterest} draggableItemType={ItemTypes.HABIT_INTEREST} displayComponent={Interest} showModal={this.props.showModal} />
+      return <DraggableInterest key={"habit-interest-" + i} data={habitInterest} draggableItemType={ItemTypes.HABIT_INTEREST} displayComponent={Interest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} />
     })
   }
 
@@ -24,7 +24,9 @@ class Habits extends Component {
 
 Habits.propTypes = {
   children: PropTypes.node,
-  userInterests: PropTypes.array
+  userInterests: PropTypes.array,
+  showModal: PropTypes.func,
+  saveInterestMetadata: PropTypes.func
 }
 
 export default Habits

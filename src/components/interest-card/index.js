@@ -3,10 +3,13 @@ import './style.css';
 // import MaterialsList from "../materials-list";
 import MasterDetail from "../master-detail/master";
 import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
+import { FieldGroup } from '../../Utilities';
 import firebase from "firebase";
 import {getRandomId} from "../../Constants";
-import reactMixin from "react-mixin"
-import reactFireMixin from "reactfire"
+import reactMixin from "react-mixin";
+import reactFireMixin from "reactfire";
+import InterestMetadata from "../interest-metadata";
+
 
 class InterestCard extends Component {
   constructor(props) {
@@ -20,12 +23,15 @@ class InterestCard extends Component {
   }
 
   componentDidMount() {
-    var materialsRef = firebase.database().ref('materials').orderByChild("interest").equalTo(this.props.data['.key']);
-    var peopleRef = firebase.database().ref('people').orderByChild("interest").equalTo(this.props.data['.key']);
-    var eventsRef = firebase.database().ref('events').orderByChild("interest").equalTo(this.props.data['.key']);
-    this.bindAsArray(materialsRef, "materials");
-    this.bindAsArray(peopleRef, "people");
-    this.bindAsArray(eventsRef, "events");
+    if(!this.props.newInterestMode) {
+      var materialsRef = firebase.database().ref('materials').orderByChild("interest").equalTo(this.props.data['.key']);
+      var peopleRef = firebase.database().ref('people').orderByChild("interest").equalTo(this.props.data['.key']);
+      var eventsRef = firebase.database().ref('events').orderByChild("interest").equalTo(this.props.data['.key']);
+      this.bindAsArray(materialsRef, "materials");
+      this.bindAsArray(peopleRef, "people");
+      this.bindAsArray(eventsRef, "events");
+    }
+
   }
 
   createItem(itemType) {
@@ -45,12 +51,11 @@ class InterestCard extends Component {
 
   }
 
-
   render() {
 
     return (
       <div className="interest-card">
-        <h1>{this.props.data.title}</h1>
+        <InterestMetadata interestKey={this.props.data['.key']} title={this.props.data.title} newInterestMode={this.props.newInterestMode} saveInterestMetadata={this.props.saveInterestMetadata} />
         <Tabs>
           <TabList>
             <Tab>Materials</Tab>
@@ -73,7 +78,9 @@ class InterestCard extends Component {
 }
 
 InterestCard.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  newInterestMode: PropTypes.bool,
+  saveInterestMetadata: PropTypes.func
 }
 
 reactMixin(InterestCard.prototype, reactFireMixin)

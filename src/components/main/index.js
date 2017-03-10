@@ -34,8 +34,8 @@ class Main extends Component {
   render() {
     return (
         <div className="main">
-          <Burners userInterests={this.props.userInterests} assignInterestToStage={this.props.assignInterestToStage.bind(this)} swapInterestStages={this.props.swapInterestStages.bind(this)} />
-          <UpNext userInterests={this.props.userInterests} assignInterestToUpNext={this.props.assignInterestToStage.bind(this)} showModal={this.props.showModal} />
+          <Burners userInterests={this.props.userInterests} assignInterestToStage={this.props.assignInterestToStage.bind(this)} swapInterestStages={this.props.swapInterestStages.bind(this)} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} />
+          <UpNext userInterests={this.props.userInterests} assignInterestToUpNext={this.props.assignInterestToStage.bind(this)} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} />
         </div>
     )
   }

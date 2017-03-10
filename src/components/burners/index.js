@@ -15,10 +15,10 @@ class Burners extends Component {
   render() {
     return (
       <div className="burners">
-        <Burner stage={"burner1"} key={"burner1"} interest={this.getBurnerInterest(1)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} />
-        <Burner stage={"burner2"} key={"burner2"} interest={this.getBurnerInterest(2)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} />
-        <Burner stage={"burner3"} key={"burner3"} interest={this.getBurnerInterest(3)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} />
-        <Burner stage={"burner4"} key={"burner4"} interest={this.getBurnerInterest(4)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} />
+        <Burner stage={"burner1"} key={"burner1"} interest={this.getBurnerInterest(1)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} />
+        <Burner stage={"burner2"} key={"burner2"} interest={this.getBurnerInterest(2)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} />
+        <Burner stage={"burner3"} key={"burner3"} interest={this.getBurnerInterest(3)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} />
+        <Burner stage={"burner4"} key={"burner4"} interest={this.getBurnerInterest(4)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} />
       </div>
     )
   }
@@ -28,7 +28,8 @@ Burners.propTypes = {
   children: PropTypes.node,
   userInterests: PropTypes.array,
   assignInterestToStage: PropTypes.func,
-  swapInterestStages: PropTypes.func
+  swapInterestStages: PropTypes.func,
+  showModal: PropTypes.func
 }
 
 reactMixin(Burners.prototype, reactFireMixin)

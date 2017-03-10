@@ -7,7 +7,7 @@ class MaterialDetail extends Component {
     super(props);
     this.state = {
       material: this.props.item,
-      dirty: false
+      isDirty: false
     }
     this.onUpdate = this.updateField.bind(this);
 
@@ -24,7 +24,7 @@ class MaterialDetail extends Component {
     var attribute = e.target.dataset.itemAttribute;
     var newMaterial = this.state.material;
     newMaterial[attribute] = e.target.value;
-    this.setState({ material: newMaterial, dirty: true});
+    this.setState({ material: newMaterial, isDirty: true});
   }
 
   saveChanges() {
@@ -36,7 +36,7 @@ class MaterialDetail extends Component {
     return (
       <form>
         <h2>{this.state.material.name || "Loading"}</h2>
-        {this.state.dirty || this.props.newItemMode ? <button onClick={this.saveChanges.bind(this)}>Save</button> : null}
+        {this.state.isDirty || this.props.newItemMode ? <button onClick={this.saveChanges.bind(this)}>Save</button> : null}
         <FieldGroup id="formControlsText" type="text" label="Where to Find" data-item-attribute="location"
                     placeholder="Website, Location in House, Friend's House, Youtube URL, etc"
                     value={this.state.material.location || "Loading"} onChange={this.onUpdate}
