@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from "react"
 import './style.css';
+import StepDetail from "../../step-detail";
 import MaterialDetail from "../../material-detail";
 import PersonDetail from "../../person-detail";
 import EventDetail from "../../event-detail";
@@ -11,6 +12,9 @@ class Detail extends Component {
 
   getDetailTemplate(item, itemType) {
     switch(itemType) {
+      case "steps":
+        return <StepDetail item={item}/>;
+        break;
       case "materials":
         return <MaterialDetail item={item}/>;
         break;

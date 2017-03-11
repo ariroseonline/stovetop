@@ -46,7 +46,7 @@ class App extends Component {
   }
 
   saveInterestMetadata(shouldCreate, newData, interestKey) {
-
+    debugger
     //firebase create
     if(shouldCreate) {
       newData.user = firebase.auth().currentUser.uid;
@@ -58,7 +58,6 @@ class App extends Component {
       //or just update existing interest
       this.firebaseRefs.userInterests.child(interestKey).update(newData);
     }
-
   }
 
   showModal(el) {

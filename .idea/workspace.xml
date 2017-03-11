@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ea467e0-351a-43eb-bbea-c1894c398eb2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/interest-metadata/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/interest-metadata/style.css" />
+    <list default="true" id="7ea467e0-351a-43eb-bbea-c1894c398eb2" name="Default" comment="Make headway with creating interests">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/step-detail/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/step-detail/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/app/index.js" afterPath="$PROJECT_DIR$/src/components/app/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/archive/index.js" afterPath="$PROJECT_DIR$/src/components/archive/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/burner-interest/index.js" afterPath="$PROJECT_DIR$/src/components/burner-interest/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/burner/index.js" afterPath="$PROJECT_DIR$/src/components/burner/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/burners/index.js" afterPath="$PROJECT_DIR$/src/components/burners/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/habits/index.js" afterPath="$PROJECT_DIR$/src/components/habits/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interest-card/index.js" afterPath="$PROJECT_DIR$/src/components/interest-card/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interest/index.js" afterPath="$PROJECT_DIR$/src/components/interest/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/main/index.js" afterPath="$PROJECT_DIR$/src/components/main/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/material-detail/index.js" afterPath="$PROJECT_DIR$/src/components/material-detail/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/up-next/index.js" afterPath="$PROJECT_DIR$/src/components/up-next/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interest-metadata/index.js" afterPath="$PROJECT_DIR$/src/components/interest-metadata/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/master-detail/detail/index.js" afterPath="$PROJECT_DIR$/src/components/master-detail/detail/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/master-detail/master/index.js" afterPath="$PROJECT_DIR$/src/components/master-detail/master/index.js" />
     </list>
     <ignored path="stovetop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +34,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/up-next/index.js">
+        <entry file="file://$PROJECT_DIR$/src/components/master-detail/master/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1760">
-              <caret line="95" column="10" selection-start-line="95" selection-start-column="10" selection-end-line="95" selection-end-column="10" />
-              <folding />
+            <state relative-caret-position="553">
+              <caret line="83" column="7" selection-start-line="83" selection-start-column="2" selection-end-line="83" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#49#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,8 +48,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/app/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="54" column="66" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
+            <state relative-caret-position="133">
+              <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -63,8 +60,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/interest-card/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
+            <state relative-caret-position="389">
+              <caret line="60" column="139" selection-start-line="60" selection-start-column="139" selection-end-line="60" selection-end-column="139" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
                 <element signature="e#122#173#0" expanded="true" />
@@ -76,72 +73,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/interest-metadata/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="23" column="117" selection-start-line="23" selection-start-column="117" selection-end-line="23" selection-end-column="117" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/interest/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/burner/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="45" column="3" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/main/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="37" column="153" selection-start-line="37" selection-start-column="153" selection-end-line="37" selection-end-column="153" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/archive/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+            <state relative-caret-position="420">
+              <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -157,7 +90,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/nav-links/index.js" />
         <option value="$PROJECT_DIR$/src/components/interest-brick/index.js" />
         <option value="$PROJECT_DIR$/src/components/nav-link/index.js" />
         <option value="$PROJECT_DIR$/src/components/burner-interest/style.css" />
@@ -179,7 +111,6 @@
         <option value="$PROJECT_DIR$/src/components/interest-card/style.css" />
         <option value="$PROJECT_DIR$/src/components/archive-interest/index.js" />
         <option value="$PROJECT_DIR$/src/components/up-next-interest/style.css" />
-        <option value="$PROJECT_DIR$/src/components/master-detail/detail/index.js" />
         <option value="$PROJECT_DIR$/src/components/material-detail/index.js" />
         <option value="$USER_HOME$/Downloads/stovetop-eab65-export.json" />
         <option value="$PROJECT_DIR$/database.rules.json" />
@@ -192,22 +123,24 @@
         <option value="$PROJECT_DIR$/src/components/nav-links/home-link/style.css" />
         <option value="$PROJECT_DIR$/src/components/nav-links/archive-link/index.js" />
         <option value="$PROJECT_DIR$/src/components/nav-links/home-link/index.js" />
-        <option value="$PROJECT_DIR$/src/components/master-detail/master/index.js" />
         <option value="$PROJECT_DIR$/src/components/draggable-interest/collect.js" />
         <option value="$PROJECT_DIR$/src/components/up-next-interest/index.js" />
         <option value="$PROJECT_DIR$/src/components/draggable-interest/source.js" />
         <option value="$PROJECT_DIR$/src/components/draggable-interest/index.js" />
         <option value="$PROJECT_DIR$/src/components/habits/index.js" />
         <option value="$PROJECT_DIR$/src/components/burner/index.js" />
-        <option value="$PROJECT_DIR$/src/components/burners/index.js" />
         <option value="$PROJECT_DIR$/src/components/burner-interest/index.js" />
         <option value="$PROJECT_DIR$/src/components/interest/index.js" />
         <option value="$PROJECT_DIR$/src/components/up-next/index.js" />
         <option value="$PROJECT_DIR$/src/components/main/index.js" />
         <option value="$PROJECT_DIR$/src/components/archive/index.js" />
+        <option value="$PROJECT_DIR$/src/components/master-detail/detail/index.js" />
+        <option value="$PROJECT_DIR$/src/components/step-detail/index.js" />
+        <option value="$PROJECT_DIR$/src/components/master-detail/master/index.js" />
         <option value="$PROJECT_DIR$/src/components/interest-card/index.js" />
         <option value="$PROJECT_DIR$/src/components/interest-metadata/index.js" />
         <option value="$PROJECT_DIR$/src/components/app/index.js" />
+        <option value="$PROJECT_DIR$/src/components/burners/index.js" />
       </list>
     </option>
   </component>
@@ -302,8 +235,30 @@
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="up-next" />
+              <option name="myItemId" value="stovetop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stovetop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master-detail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="master" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -324,48 +279,8 @@
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="stovetop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stovetop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="material-detail" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stovetop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stovetop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="master-detail" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -409,29 +324,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="interest-card" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stovetop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stovetop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="interest" />
+              <option name="myItemId" value="burners" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -497,28 +390,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="archive" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stovetop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stovetop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -539,16 +410,16 @@
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/master-detail/master" />
+      <recent name="$PROJECT_DIR$/src/components/nav-links/home-link" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/master-detail" />
       <recent name="$PROJECT_DIR$/src/components/nav-links" />
       <recent name="$PROJECT_DIR$/src/components/nav-links/home-link" />
       <recent name="$PROJECT_DIR$/src/components/nav-links/" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/master-detail/master" />
-      <recent name="$PROJECT_DIR$/src/components/nav-links/home-link" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Start">
@@ -714,7 +585,10 @@
       <workItem from="1489088589403" duration="1822000" />
       <workItem from="1489114407737" duration="1613000" />
       <workItem from="1489116613885" duration="2141000" />
-      <workItem from="1489118787791" duration="1392000" />
+      <workItem from="1489118787791" duration="2075000" />
+      <workItem from="1489120900781" duration="196000" />
+      <workItem from="1489202387255" duration="2101000" />
+      <workItem from="1489204518777" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="fixed history">
       <created>1486934625997</created>
@@ -828,11 +702,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489089885011</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Make headway with creating interests">
+      <created>1489120197786</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1489120197786</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82217000" />
+    <option name="totallyTimeSpent" value="85521000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="23" width="1426" height="873" extended-state="0" />
@@ -905,16 +786,16 @@
     <MESSAGE value="fixed interest card to work with react fire" />
     <MESSAGE value="amazing refactor of a reusable draggable interest" />
     <MESSAGE value="refactored modals into one reusable modal, and made a burner interest use a generic draggableinterest HOC" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored modals into one reusable modal, and made a burner interest use a generic draggableinterest HOC" />
+    <MESSAGE value="Make headway with creating interests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make headway with creating interests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/materials-list/index.js" />
     <entry file="file://$PROJECT_DIR$/src/components/app/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -1009,13 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/master-detail/detail/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/up-next/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-273">
@@ -1077,13 +951,6 @@
     <entry file="file://$PROJECT_DIR$/src/components/archive-interest/index.js" />
     <entry file="file://$PROJECT_DIR$/src/components/habit-interest/index.js" />
     <entry file="file://$PROJECT_DIR$/src/components/up-next-interest/index.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/master-detail/master/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="64" column="24" selection-start-line="64" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/draggable-interest/collect.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1119,28 +986,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/burners/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Utilities.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/material-detail/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="38" column="42" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1151,29 +1000,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/burner/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="45" column="3" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/burner-interest/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/interest/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1181,7 +1011,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1760">
           <caret line="95" column="10" selection-start-line="95" selection-start-column="10" selection-end-line="95" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1189,13 +1018,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="37" column="153" selection-start-line="37" selection-start-column="153" selection-end-line="37" selection-end-column="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/step-detail/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/material-detail/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/master-detail/detail/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/archive/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
+        <state relative-caret-position="456">
           <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
           <folding />
         </state>
@@ -1203,9 +1054,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
+        <state relative-caret-position="456">
           <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1213,14 +1063,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/interest-metadata/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/interest-card/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
+        <state relative-caret-position="389">
+          <caret line="60" column="139" selection-start-line="60" selection-start-column="139" selection-end-line="60" selection-end-column="139" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
             <element signature="e#122#173#0" expanded="true" />
@@ -1228,20 +1085,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/interest-metadata/index.js">
+    <entry file="file://$PROJECT_DIR$/src/components/master-detail/master/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="23" column="117" selection-start-line="23" selection-start-column="117" selection-end-line="23" selection-end-column="117" />
+        <state relative-caret-position="553">
+          <caret line="83" column="7" selection-start-line="83" selection-start-column="2" selection-end-line="83" selection-end-column="7" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/burners/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="20" column="210" selection-start-line="20" selection-start-column="210" selection-end-line="20" selection-end-column="210" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/burner/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/burner-interest/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/app/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="54" column="66" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
+        <state relative-caret-position="133">
+          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>

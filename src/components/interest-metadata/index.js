@@ -21,7 +21,10 @@ class InterestMetadata extends Component {
 
   saveChanges(e) {
     //gather data and tell top level component to update firebase
+    debugger
     this.props.saveInterestMetadata(this.props.newInterestMode, { title: this.state.title }, this.props.interestKey);
+    // this.setState({ isDirty: false });
+
   }
 
   render() {
