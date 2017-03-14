@@ -37,14 +37,10 @@ class App extends Component {
     })
   }
 
-  assignInterestToStage(draggedInterestKey, stage) {
-    this.firebaseRefs.interests.child(draggedInterestKey).update({stage: stage});
+  moveInterest(draggedInterestKey, stage) {
+    this.props.moveInterest(draggedInterestKey, stage);
   }
 
-  swapInterestStages(toStage, fromStage, currentInterestKey, draggedInterestKey) {
-    this.firebaseRefs.interests.child(currentInterestKey).update({stage: fromStage});
-    this.firebaseRefs.interests.child(draggedInterestKey).update({stage: toStage});
-  }
 
   saveInterestMetadata(isNew, data, interestKey) {
 
@@ -99,20 +95,19 @@ class App extends Component {
   render() {
     return (
       <div className="container-page">
-        <h1 className="brand"><HomeLink assignInterestToStage={this.assignInterestToStage.bind(this)}/>
+        <h1 className="brand"><HomeLink moveInterest={this.moveInterest.bind(this)}/>
         </h1> {/* stage name UPNEXT Used only for drag-dropping from another page*/}
         <ul className="nav">
           <li><Button block onClick={this.createInterest.bind(this)}>Create New Interest</Button></li>
-          <li><ArchiveLink assignInterestToStage={this.assignInterestToStage.bind(this)}/></li>
-          <li><HabitsLink assignInterestToStage={this.assignInterestToStage.bind(this)}/></li>
+          <li><ArchiveLink moveInterest={this.moveInterest.bind(this)}/></li>
+          <li><HabitsLink moveInterest={this.moveInterest.bind(this)}/></li>
           <li><Link to="/account">Account</Link></li>
         </ul>
         <div className="content">
           {/*Complicated way of getting props to work with Router children of App*/}
           { React.Children.map(this.props.children, child => React.cloneElement(child, {
               interests: this.props.interests,
-              assignInterestToStage: this.assignInterestToStage.bind(this),
-              swapInterestStages: this.swapInterestStages.bind(this),
+              moveInterest: this.moveInterest.bind(this),
               showModal: this.showModal.bind(this),
               saveInterestMetadata: this.saveInterestMetadata.bind(this),
               saveInterestResource: this.saveInterestResource.bind(this)

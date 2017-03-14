@@ -12,9 +12,10 @@ class Burner extends Component {
 
   dropInterestOnBurner(interestKey, fromBurnerStage) {
     if (this.props.interest) { //if burner has something, do swap operation
-      this.props.swapBurnerInterests(this.props.stage, fromBurnerStage, this.props.interest['.key'], interestKey);
+      this.props.moveInterest(interestKey, this.props.stage);
+      this.props.moveInterest(this.props.interest['.key'], fromBurnerStage);
     } else { //just add to empty burner
-      this.props.assignInterestToBurner(interestKey, this.props.stage);
+      this.props.moveInterest(interestKey, this.props.stage);
     }
   }
 
@@ -73,8 +74,7 @@ function collect(connect, monitor) {
 Burner.propTypes = {
   stage: PropTypes.string,
   interest: PropTypes.object,
-  swapBurnerInterests: PropTypes.func,
-  assignInterestToBurner: PropTypes.func,
+  moveInterest: PropTypes.func,
   isOver: PropTypes.bool.isRequired,
   connectDropTarget: PropTypes.func,
   showModal: PropTypes.func,

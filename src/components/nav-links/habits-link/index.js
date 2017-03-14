@@ -16,7 +16,7 @@ class HabitsLink extends Component {
   }
 
   dropInterestOnLink(interestKey) {
-    this.props.assignInterestToStage(interestKey, InterestStages.HABIT);
+    this.props.moveInterest(interestKey, InterestStages.HABIT);
     //TODO: potentially reusable with other instances of updating an interest
   }
 }
@@ -24,7 +24,7 @@ class HabitsLink extends Component {
 HabitsLink.propTypes = {
   path: PropTypes.string,
   name: PropTypes.string,
-  assignInterestToStage: PropTypes.func
+  moveInterest: PropTypes.func
 }
 
 

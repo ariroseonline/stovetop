@@ -33,7 +33,7 @@ class UpNext extends Component {
 
 
   dropInterestOnUpNext(interestKey, stage) {
-    this.props.assignInterestToUpNext(interestKey, InterestStages.UP_NEXT);
+    this.props.moveInterest(interestKey, InterestStages.UP_NEXT);
   }
 
   renderCanDropMessage() {
@@ -91,7 +91,7 @@ function collect(connect, monitor) {
 UpNext.propTypes = {
   children: PropTypes.node,
   interests: PropTypes.array,
-  assignInterestToUpNext: PropTypes.func,
+  moveInterest: PropTypes.func,
   showModal: PropTypes.func,
   saveInterestMetadata: PropTypes.func,
   saveInterestResource: PropTypes.func

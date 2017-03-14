@@ -17,7 +17,7 @@ class HomeLink extends Component {
   }
 
   dropInterestOnLink(interestKey) {
-    this.props.assignInterestToStage(interestKey, InterestStages.UP_NEXT);
+    this.props.moveInterest(interestKey, InterestStages.UP_NEXT);
     //TODO: potentially reusable with other instances of updating an interest
   }
 
@@ -26,7 +26,7 @@ class HomeLink extends Component {
 HomeLink.propTypes = {
   path: PropTypes.string,
   name: PropTypes.string,
-  assignInterestToStage: PropTypes.func
+  moveInterest: PropTypes.func
 }
 
 

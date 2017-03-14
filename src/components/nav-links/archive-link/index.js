@@ -17,7 +17,7 @@ class ArchiveLink extends Component {
   }
 
   dropInterestOnLink(interestKey) {
-    this.props.assignInterestToStage(interestKey, InterestStages.ARCHIVE);
+    this.props.moveInterest(interestKey, InterestStages.ARCHIVE);
     //TODO: potentially reusable with other instances of updating an interest
   }
 
@@ -26,7 +26,7 @@ class ArchiveLink extends Component {
 ArchiveLink.propTypes = {
   path: PropTypes.string,
   name: PropTypes.string,
-  assignInterestToStage: PropTypes.func
+  moveInterest: PropTypes.func
 }
 
 

@@ -28,10 +28,12 @@ export function removeComment(postId, index) {
 
 
 export function fetchInterests() {
-  var interests = firebase.database().ref('interests').orderByChild("user").equalTo(firebase.auth().currentUser.uid);
+  var Interests = firebase.database().ref('interests');
+  var UserInterests = Interests.orderByChild("user").equalTo(firebase.auth().currentUser.uid);
 
   return function(dispatch) {
-    interests.on('value', function(snapshot) {
+    UserInterests.on('value', function(snapshot) {
+      console.log('dispatching FETCH');
       dispatch({
         type: "FETCH_INTERESTS",
         payload: convertFirebaseObjectToArrayOfObjects(snapshot.val())
@@ -41,12 +43,19 @@ export function fetchInterests() {
 
 }
 
-export function assignInterestToStage(draggedInterestKey, stage) {
-}
+export function moveInterest(interestKey, stage) {
+  var Interests = firebase.database().ref('interests');
+  console.log('ACTION moveINTEST', interestKey, stage)
+  return function(dispatch) {
+    Interests.child(interestKey).update({stage: stage});
+  }
 
-export function swapInterestStages(toStage, fromStage, currentInterestKey, draggedInterestKey) {
-
 }
+//
+// export function swapInterestStages(toStage, fromStage, currentInterestKey, draggedInterestKey) {
+//   this.firebaseRefs.interests.child(currentInterestKey).update({stage: fromStage});
+//   this.firebaseRefs.interests.child(draggedInterestKey).update({stage: toStage});
+// }
 
 export function saveInterest() {
 
