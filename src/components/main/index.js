@@ -15,6 +15,7 @@ class Main extends Component {
         <div className="main">
           <Burners interests={this.props.interests}
                    moveInterest={this.props.moveInterest}
+                   swapInterests={this.props.swapInterests}
                    showModal={this.props.showModal}
                    saveInterestMetadata={this.props.saveInterestMetadata}
                    saveInterestResource={this.props.saveInterestResource} />

@@ -49,6 +49,18 @@ export function moveInterest(interestKey, stage) {
   return function(dispatch) {
     Interests.child(interestKey).update({stage: stage});
   }
+}
+
+//atomic update to avoid race conditions
+export function swapInterests(interestKey1, interestKey2, stage1, stage2) {
+  var Interests = firebase.database().ref('interests');
+  var update = {};
+  update["/" + interestKey1 + "/stage"] = stage1;
+  update["/" + interestKey2 + "/stage"] = stage2;
+
+  return function(dispatch) {
+    Interests.update(update);
+  }
 
 }
 //

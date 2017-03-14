@@ -37,11 +37,6 @@ class App extends Component {
     })
   }
 
-  moveInterest(draggedInterestKey, stage) {
-    this.props.moveInterest(draggedInterestKey, stage);
-  }
-
-
   saveInterestMetadata(isNew, data, interestKey) {
 
     if(isNew) {
@@ -95,19 +90,20 @@ class App extends Component {
   render() {
     return (
       <div className="container-page">
-        <h1 className="brand"><HomeLink moveInterest={this.moveInterest.bind(this)}/>
+        <h1 className="brand"><HomeLink moveInterest={this.props.moveInterest}/>
         </h1> {/* stage name UPNEXT Used only for drag-dropping from another page*/}
         <ul className="nav">
           <li><Button block onClick={this.createInterest.bind(this)}>Create New Interest</Button></li>
-          <li><ArchiveLink moveInterest={this.moveInterest.bind(this)}/></li>
-          <li><HabitsLink moveInterest={this.moveInterest.bind(this)}/></li>
+          <li><ArchiveLink moveInterest={this.props.moveInterest}/></li>
+          <li><HabitsLink moveInterest={this.props.moveInterest}/></li>
           <li><Link to="/account">Account</Link></li>
         </ul>
         <div className="content">
           {/*Complicated way of getting props to work with Router children of App*/}
           { React.Children.map(this.props.children, child => React.cloneElement(child, {
               interests: this.props.interests,
-              moveInterest: this.moveInterest.bind(this),
+              moveInterest: this.props.moveInterest,
+              swapInterests: this.props.swapInterests,
               showModal: this.showModal.bind(this),
               saveInterestMetadata: this.saveInterestMetadata.bind(this),
               saveInterestResource: this.saveInterestResource.bind(this)

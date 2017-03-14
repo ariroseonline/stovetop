@@ -15,10 +15,10 @@ class Burners extends Component {
   render() {
     return (
       <div className="burners">
-        <Burner stage={"burner1"} key={"burner1"} interest={this.getBurnerInterest(1)} moveInterest={this.props.moveInterest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
-        <Burner stage={"burner2"} key={"burner2"} interest={this.getBurnerInterest(2)} moveInterest={this.props.moveInterest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
-        <Burner stage={"burner3"} key={"burner3"} interest={this.getBurnerInterest(3)} moveInterest={this.props.moveInterest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
-        <Burner stage={"burner4"} key={"burner4"} interest={this.getBurnerInterest(4)} moveInterest={this.props.moveInterest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+        <Burner stage={"burner1"} key={"burner1"} interest={this.getBurnerInterest(1)} moveInterest={this.props.moveInterest} swapInterests={this.props.swapInterests} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+        <Burner stage={"burner2"} key={"burner2"} interest={this.getBurnerInterest(2)} moveInterest={this.props.moveInterest} swapInterests={this.props.swapInterests} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+        <Burner stage={"burner3"} key={"burner3"} interest={this.getBurnerInterest(3)} moveInterest={this.props.moveInterest} swapInterests={this.props.swapInterests} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+        <Burner stage={"burner4"} key={"burner4"} interest={this.getBurnerInterest(4)} moveInterest={this.props.moveInterest} swapInterests={this.props.swapInterests} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
       </div>
     )
   }
