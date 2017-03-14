@@ -34,8 +34,17 @@ class Main extends Component {
   render() {
     return (
         <div className="main">
-          <Burners userInterests={this.props.userInterests} assignInterestToStage={this.props.assignInterestToStage.bind(this)} swapInterestStages={this.props.swapInterestStages.bind(this)} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} />
-          <UpNext userInterests={this.props.userInterests} assignInterestToUpNext={this.props.assignInterestToStage.bind(this)} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} />
+          <Burners userInterests={this.props.userInterests}
+                   assignInterestToStage={this.props.assignInterestToStage.bind(this)}
+                   swapInterestStages={this.props.swapInterestStages.bind(this)}
+                   showModal={this.props.showModal}
+                   saveInterestMetadata={this.props.saveInterestMetadata}
+                   saveInterestResource={this.props.saveInterestResource} />
+          <UpNext userInterests={this.props.userInterests}
+                  assignInterestToUpNext={this.props.assignInterestToStage.bind(this)}
+                  showModal={this.props.showModal}
+                  saveInterestMetadata={this.props.saveInterestMetadata}
+                  saveInterestResource={this.props.saveInterestResource}  />
         </div>
     )
   }
@@ -46,7 +55,9 @@ Main.propTypes = {
   userInterests: PropTypes.array,
   assignInterestToStage: PropTypes.func,
   swapInterestStages: PropTypes.func,
-  showModal: PropTypes.func
+  showModal: PropTypes.func,
+  saveInterestMetadata: PropTypes.func,
+  saveInterestResource: PropTypes.func
 }
 
 // reactMixin(Main.prototype, reactFireMixin)

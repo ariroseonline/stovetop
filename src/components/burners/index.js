@@ -15,10 +15,10 @@ class Burners extends Component {
   render() {
     return (
       <div className="burners">
-        <Burner stage={"burner1"} key={"burner1"} interest={this.getBurnerInterest(1)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} />
-        <Burner stage={"burner2"} key={"burner2"} interest={this.getBurnerInterest(2)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} />
-        <Burner stage={"burner3"} key={"burner3"} interest={this.getBurnerInterest(3)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} />
-        <Burner stage={"burner4"} key={"burner4"} interest={this.getBurnerInterest(4)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} />
+        <Burner stage={"burner1"} key={"burner1"} interest={this.getBurnerInterest(1)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+        <Burner stage={"burner2"} key={"burner2"} interest={this.getBurnerInterest(2)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+        <Burner stage={"burner3"} key={"burner3"} interest={this.getBurnerInterest(3)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+        <Burner stage={"burner4"} key={"burner4"} interest={this.getBurnerInterest(4)} assignInterestToBurner={this.props.assignInterestToStage} swapBurnerInterests={this.props.swapInterestStages} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
       </div>
     )
   }
@@ -30,7 +30,8 @@ Burners.propTypes = {
   assignInterestToStage: PropTypes.func,
   swapInterestStages: PropTypes.func,
   showModal: PropTypes.func,
-  saveInterestMetadata: PropTypes.func
+  saveInterestMetadata: PropTypes.func,
+  saveInterestResource: PropTypes.func
 }
 
 reactMixin(Burners.prototype, reactFireMixin)

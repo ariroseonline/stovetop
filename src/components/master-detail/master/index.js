@@ -46,8 +46,8 @@ class Master extends Component {
     this.setState({ activeItemId : newItemId, newItemMode: true });
   }
 
-  saveItem() {
-    this.props.saveItem(this.props.itemType);
+  saveInterestResource() {
+    this.props.saveInterestResource(this.props.itemType);
   }
 
   render() {
@@ -58,11 +58,12 @@ class Master extends Component {
         <Col xs={3}>
           <ListGroup>
             {this.state.items.map(function(item, i){
+              var header = (this.props.itemType === "chunks" ? (i+1) + "." : "") + item.name;
+              var subheader = "5 resources";
+
               return (
-                <ListGroupItem onClick={this.onItemClick.bind(this, item['.key'])} className={item['.key'] === this.state.activeItemId ? "active" : ""} key={i}>
-                  {this.props.itemType === "steps" ? <span>{i+1}.</span> :
-                  <span className={item.type === "book" ? "glyphicon glyphicon-book" : "glyphicon glyphicon-link"}></span>}
-                  &nbsp; <span className="item-name">{item.name}</span>
+                <ListGroupItem header={header} onClick={this.onItemClick.bind(this, item['.key'])} className={item['.key'] === this.state.activeItemId ? "active" : ""} key={i}>
+                  {subheader}
                 </ListGroupItem>
               )
             }.bind(this))}
@@ -70,7 +71,7 @@ class Master extends Component {
           <Button block onClick={this.onAddItemClick.bind(this)}>Add New Item</Button>
         </Col>
         <Col xs={9}>
-          <Detail item={activeItem} itemType={this.props.itemType} newItemMode={this.state.newItemMode} />
+          <Detail item={activeItem} itemType={this.props.itemType} newItemMode={this.state.newItemMode} saveInterestResource={this.props.saveInterestResource} />
         </Col>
       </Row>
     )
@@ -81,7 +82,7 @@ Master.propTypes = {
   items: PropTypes.array,
   type: PropTypes.string,
   createItem: PropTypes.func,
-  saveItem: PropTypes.func
+  saveInterestResource: PropTypes.func
 }
 
 export default Master;

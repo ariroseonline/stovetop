@@ -31,7 +31,7 @@ class App extends Component {
 
   createInterest() {
     this.setState({
-      modalContent: <InterestCard data={{}} newInterestMode={true} saveInterestMetadata={this.saveInterestMetadata} />,
+      modalContent: <InterestCard data={{}} newInterestMode={true} saveInterestMetadata={this.saveInterestMetadata} saveInterestResource={this.saveInterestResource.bind(this)} />,
       showModal: true
     })
   }
@@ -45,18 +45,42 @@ class App extends Component {
     this.firebaseRefs.userInterests.child(draggedInterestKey).update({stage: toStage});
   }
 
-  saveInterestMetadata(shouldCreate, newData, interestKey) {
-    debugger
-    //firebase create
-    if(shouldCreate) {
-      newData.user = firebase.auth().currentUser.uid;
-      newData.stage = InterestStages.UP_NEXT;
+  saveInterestMetadata(isNew, data, interestKey) {
+
+    if(isNew) {
+      data.user = firebase.auth().currentUser.uid;
+      data.stage = InterestStages.UP_NEXT;
       //fixes bug where this.firebaseRefs.userInterests doesn't work for some reason in this  condition
       var userInterestsRef = firebase.database().ref('interests');
-      userInterestsRef.push(newData);
+      userInterestsRef.push(data);
     } else {
       //or just update existing interest
-      this.firebaseRefs.userInterests.child(interestKey).update(newData);
+      this.firebaseRefs.userInterests.child(interestKey).update(data);
+    }
+  }
+
+  saveInterestResource(resourceKey, resourceType, data, interestKey) {
+    debugger
+    var isNew = !resourceKey;
+    if(isNew) {
+      // newData.user = firebase.auth().currentUser.uid; //TODO: might want to associate resource with user? currently references interest, which is associated with user
+
+      //TODO: make resourceType into a config constant application wide
+      //a) must push to a /{resource} endpoint
+      var resourceTypeRef = firebase.database().ref(resourceType);
+      var newResourceKey = resourceTypeRef.push(data);
+      //b) must add reference in /interest/resources endpoint with  name, resource (key), type (plural)
+      var interestResourceRef = firebase.database().ref('interests').child(interestKey).child(resourceType);
+      var newResource = {};
+      newResource[newResourceKey] = true;
+      interestResourceRef.update({
+        newResourceKey: true
+      })
+
+    } else {
+      //or just update existing interest resource
+      var resourceRef = firebase.database().ref(resourceType).child(resourceKey);
+      resourceRef.update(data);
     }
   }
 
@@ -89,7 +113,8 @@ class App extends Component {
               assignInterestToStage: this.assignInterestToStage.bind(this),
               swapInterestStages: this.swapInterestStages.bind(this),
               showModal: this.showModal.bind(this),
-              saveInterestMetadata: this.saveInterestMetadata.bind(this)
+              saveInterestMetadata: this.saveInterestMetadata.bind(this),
+              saveInterestResource: this.saveInterestResource.bind(this)
             })
           )}
 

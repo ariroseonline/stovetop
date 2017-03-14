@@ -8,7 +8,7 @@ import InterestCard from "../interest-card";
 class Interest extends Component {
 
   handleClick = (e) => {
-    this.props.showModal(<InterestCard data={this.props.data} newInterestMode={false} saveInterestMetadata={this.props.saveInterestMetadata} />)
+    this.props.showModal(<InterestCard data={this.props.data} newInterestMode={false} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />)
   }
 
   render() {
@@ -42,7 +42,8 @@ Interest.propTypes = {
   connectDragSource: PropTypes.func,
   isDragging: PropTypes.bool,
   showModal: PropTypes.func,
-  saveInterestMetadata: PropTypes.func
+  saveInterestMetadata: PropTypes.func,
+  saveInterestResource: PropTypes.func
 }
 
 export default Interest;

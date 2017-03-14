@@ -40,7 +40,7 @@ class Burner extends Component {
           </div>
         )}
         {/*if interest exists, put BurnerInterest there */}
-        { this.props.interest ? <DraggableInterest key={"burner-interest-" + this.props.stage} data={this.props.interest} draggableItemType={ItemTypes.BURNER_INTEREST} displayComponent={BurnerInterest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} /> : null }
+        { this.props.interest ? <DraggableInterest key={"burner-interest-" + this.props.stage} data={this.props.interest} draggableItemType={ItemTypes.BURNER_INTEREST} displayComponent={BurnerInterest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} /> : null }
       </div>
     )
   }
@@ -78,7 +78,8 @@ Burner.propTypes = {
   isOver: PropTypes.bool.isRequired,
   connectDropTarget: PropTypes.func,
   showModal: PropTypes.func,
-  saveInterestMetadata: PropTypes.func
+  saveInterestMetadata: PropTypes.func,
+  saveInterestResource: PropTypes.func
 };
 
 

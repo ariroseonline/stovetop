@@ -29,7 +29,10 @@ class EventDetail extends Component {
 }
 
 EventDetail.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
+  itemType: PropTypes.string,
+  newItemMode: PropTypes.bool,
+  saveInterestResource: PropTypes.func
 }
 
 export default EventDetail;

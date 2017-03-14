@@ -16,3 +16,13 @@ export function FieldGroup({id, label, help, ...props}) {
   );
 }
 
+export function convertFirebaseObjectToArrayOfObjects(obj) {
+  var array =  Object.keys(obj).map(function (key) {
+    var newArrayValue = obj[key];
+    newArrayValue['.key'] = key;
+    return newArrayValue;
+  });
+
+  return array;
+}
+
