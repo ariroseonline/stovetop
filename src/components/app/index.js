@@ -19,14 +19,15 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      userInterests: [],
+      interests: [],
       modalContent: null
     }
   }
 
   componentDidMount() {
-    var userInterestsRef = firebase.database().ref('interests').orderByChild("user").equalTo(firebase.auth().currentUser.uid);
-    this.bindAsArray(userInterestsRef, "userInterests");
+    this.props.fetchInterests();
+    // var interestsRef = firebase.database().ref('interests').orderByChild("user").equalTo(firebase.auth().currentUser.uid);
+    // this.bindAsArray(interestsRef, "interests");
   }
 
   createInterest() {
@@ -37,12 +38,12 @@ class App extends Component {
   }
 
   assignInterestToStage(draggedInterestKey, stage) {
-    this.firebaseRefs.userInterests.child(draggedInterestKey).update({stage: stage});
+    this.firebaseRefs.interests.child(draggedInterestKey).update({stage: stage});
   }
 
   swapInterestStages(toStage, fromStage, currentInterestKey, draggedInterestKey) {
-    this.firebaseRefs.userInterests.child(currentInterestKey).update({stage: fromStage});
-    this.firebaseRefs.userInterests.child(draggedInterestKey).update({stage: toStage});
+    this.firebaseRefs.interests.child(currentInterestKey).update({stage: fromStage});
+    this.firebaseRefs.interests.child(draggedInterestKey).update({stage: toStage});
   }
 
   saveInterestMetadata(isNew, data, interestKey) {
@@ -50,12 +51,12 @@ class App extends Component {
     if(isNew) {
       data.user = firebase.auth().currentUser.uid;
       data.stage = InterestStages.UP_NEXT;
-      //fixes bug where this.firebaseRefs.userInterests doesn't work for some reason in this  condition
-      var userInterestsRef = firebase.database().ref('interests');
-      userInterestsRef.push(data);
+      //fixes bug where this.firebaseRefs.interests doesn't work for some reason in this  condition
+      var interestsRef = firebase.database().ref('interests');
+      interestsRef.push(data);
     } else {
       //or just update existing interest
-      this.firebaseRefs.userInterests.child(interestKey).update(data);
+      this.firebaseRefs.interests.child(interestKey).update(data);
     }
   }
 
@@ -109,7 +110,7 @@ class App extends Component {
         <div className="content">
           {/*Complicated way of getting props to work with Router children of App*/}
           { React.Children.map(this.props.children, child => React.cloneElement(child, {
-              userInterests: this.state.userInterests,
+              interests: this.props.interests,
               assignInterestToStage: this.assignInterestToStage.bind(this),
               swapInterestStages: this.swapInterestStages.bind(this),
               showModal: this.showModal.bind(this),

@@ -12,35 +12,35 @@ class Main extends Component {
   // constructor(props) {
   //   super();
   //   this.state = {
-  //     userInterests: []
+  //     interests: []
   //   }
   // }
 
   //{/*componentDidMount() {*/}
 
-  //   var userInterestsRef = firebase.database().ref('interests').orderByChild("user").equalTo(firebase.auth().currentUser.uid);
-  //   this.bindAsArray(userInterestsRef, "userInterests");
+  //   var interestsRef = firebase.database().ref('interests').orderByChild("user").equalTo(firebase.auth().currentUser.uid);
+  //   this.bindAsArray(interestsRef, "interests");
   //
   // }
   // assignInterestToStage(draggedInterestKey, stage) {
-  //   this.firebaseRefs.userInterests.child(draggedInterestKey).update({ stage: stage });
+  //   this.firebaseRefs.interests.child(draggedInterestKey).update({ stage: stage });
   // }
   //
   // swapInterestStages(toStage, fromStage,  currentInterestKey, draggedInterestKey) {
-  //   this.firebaseRefs.userInterests.child(currentInterestKey).update({ stage: fromStage });
-  //   this.firebaseRefs.userInterests.child(draggedInterestKey).update({ stage: toStage });
+  //   this.firebaseRefs.interests.child(currentInterestKey).update({ stage: fromStage });
+  //   this.firebaseRefs.interests.child(draggedInterestKey).update({ stage: toStage });
   // }
 
   render() {
     return (
         <div className="main">
-          <Burners userInterests={this.props.userInterests}
+          <Burners interests={this.props.interests}
                    assignInterestToStage={this.props.assignInterestToStage.bind(this)}
                    swapInterestStages={this.props.swapInterestStages.bind(this)}
                    showModal={this.props.showModal}
                    saveInterestMetadata={this.props.saveInterestMetadata}
                    saveInterestResource={this.props.saveInterestResource} />
-          <UpNext userInterests={this.props.userInterests}
+          <UpNext interests={this.props.interests}
                   assignInterestToUpNext={this.props.assignInterestToStage.bind(this)}
                   showModal={this.props.showModal}
                   saveInterestMetadata={this.props.saveInterestMetadata}
@@ -52,7 +52,7 @@ class Main extends Component {
 
 Main.propTypes = {
   children: PropTypes.node,
-  userInterests: PropTypes.array,
+  interests: PropTypes.array,
   assignInterestToStage: PropTypes.func,
   swapInterestStages: PropTypes.func,
   showModal: PropTypes.func,

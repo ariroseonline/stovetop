@@ -49,7 +49,7 @@ class UpNext extends Component {
   }
 
   renderUpNextInterests() {
-    return this.props.userInterests.filter((interest) => interest.stage === InterestStages.UP_NEXT).map((upNextInterest, i) => {
+    return this.props.interests.filter((interest) => interest.stage === InterestStages.UP_NEXT).map((upNextInterest, i) => {
       return <DraggableInterest key={"up-next-interest-" + i} data={upNextInterest} draggableItemType={ItemTypes.UP_NEXT_INTEREST} displayComponent={Interest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
     })
   }

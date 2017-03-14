@@ -9,7 +9,7 @@ import reactFireMixin from "reactfire"
 class Burners extends Component {
 
   getBurnerInterest(burnerId) {
-    return this.props.userInterests.find((interest)=>interest.stage=== InterestStages.BURNER[burnerId])
+    return this.props.interests.find((interest)=>interest.stage=== InterestStages.BURNER[burnerId])
   }
 
   render() {
@@ -26,7 +26,7 @@ class Burners extends Component {
 
 Burners.propTypes = {
   children: PropTypes.node,
-  userInterests: PropTypes.array,
+  interests: PropTypes.array,
   assignInterestToStage: PropTypes.func,
   swapInterestStages: PropTypes.func,
   showModal: PropTypes.func,
