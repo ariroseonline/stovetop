@@ -2,11 +2,8 @@ import React, {Component, PropTypes} from "react"
 import './style.css';
 import {ItemTypes} from "../../Constants"
 import {DropTarget} from "react-dnd"
-import firebase from "firebase"
-import {InterestStages} from "../../Constants"
 import BurnerInterest from "../burner-interest"
 import DraggableInterest from "../draggable-interest"
-import _ from "lodash";
 
 class Burner extends Component {
 
@@ -40,7 +37,7 @@ class Burner extends Component {
           </div>
         )}
         {/*if interest exists, put BurnerInterest there */}
-        { this.props.interest ? <DraggableInterest key={"burner-interest-" + this.props.stage} data={this.props.interest} draggableItemType={ItemTypes.BURNER_INTEREST} displayComponent={BurnerInterest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} /> : null }
+        { this.props.interest ? <DraggableInterest key={"burner-interest-" + this.props.stage} data={this.props.interest} draggableItemType={ItemTypes.BURNER_INTEREST} displayComponent={BurnerInterest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource}  fetchInterestResource={this.props.fetchInterestResource} /> : null }
       </div>
     )
   }
@@ -79,7 +76,8 @@ Burner.propTypes = {
   connectDropTarget: PropTypes.func,
   showModal: PropTypes.func,
   saveInterestMetadata: PropTypes.func,
-  saveInterestResource: PropTypes.func
+  saveInterestResource: PropTypes.func,
+  fetchInterestResource: PropTypes.func
 };
 
 

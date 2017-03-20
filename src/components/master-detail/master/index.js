@@ -16,23 +16,25 @@ import {
 class Master extends Component {
   constructor(props) {
     super(props);
-    var activeItem = props.items[0] || {};
+    // var activeItem = props.items[0] || {};
     this.state = {
-      items: props.items,
-      activeItemId: activeItem['.key']
+      newItemMode: false,
+      activeItemId: ""
+      // items: props.items,
+      // activeItemId: activeItem['.key']
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    //not great set up repeating the items part
-    if(nextProps.items.length) {
-      var activeItem = nextProps.items[0];
-
-      this.setState({
-        items: nextProps.items,
-        activeItemId: activeItem['.key']
-      })
-    }
+    // //not great set up repeating the items part
+    // if(nextProps.items.length) {
+    //   var activeItem = nextProps.items[0];
+    //
+    //   this.setState({
+    //     items: nextProps.items,
+    //     activeItemId: activeItem['.key']
+    //   })
+    // }
 
 
   }
@@ -51,18 +53,20 @@ class Master extends Component {
   }
 
   render() {
-    var activeItem = this.state.items.find(item => item['.key'] === this.state.activeItemId) || {};
+    var items = this.props.items,
+        activeItem = items.find(item => item['.key'] === this.state.activeItemId) || items[0] || {};
+
 
     return (
       <Row>
         <Col xs={3}>
           <ListGroup>
-            {this.state.items.map(function(item, i){
+            {items.map(function(item, i){
               var header = (this.props.itemType === "chunks" ? (i+1) + "." : "") + item.name;
               var subheader = "5 resources";
 
               return (
-                <ListGroupItem header={header} onClick={this.onItemClick.bind(this, item['.key'])} className={item['.key'] === this.state.activeItemId ? "active" : ""} key={i}>
+                <ListGroupItem header={header} onClick={this.onItemClick.bind(this, item['.key'])} className={item['.key'] === activeItem['.key'] ? "active" : ""} key={i}>
                   {subheader}
                 </ListGroupItem>
               )

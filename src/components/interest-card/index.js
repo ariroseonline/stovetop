@@ -1,9 +1,7 @@
 import React, {Component, PropTypes} from "react"
 import './style.css';
-// import MaterialsList from "../materials-list";
 import MasterDetail from "../master-detail/master";
 import {Tab, Tabs, TabList, TabPanel} from "react-tabs";
-import {FieldGroup} from '../../Utilities';
 import firebase from "firebase";
 import {getRandomId} from "../../Constants";
 import reactMixin from "react-mixin";
@@ -14,29 +12,22 @@ import InterestMetadata from "../interest-metadata";
 class InterestCard extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      chunks: [],
-      materials: [],
-      people: [],
-      events: []
-    }
   }
-
-  componentDidMount() {
-    if (!this.props.newInterestMode) {
-      var chunksRef = firebase.database().ref('chunks').orderByChild("interest").equalTo(this.props.data['.key']);
-      var materialsRef = firebase.database().ref('materials').orderByChild("interest").equalTo(this.props.data['.key']);
-      var peopleRef = firebase.database().ref('people').orderByChild("interest").equalTo(this.props.data['.key']);
-      var eventsRef = firebase.database().ref('events').orderByChild("interest").equalTo(this.props.data['.key']);
-      this.bindAsArray(chunksRef, "chunks");
-      this.bindAsArray(materialsRef, "materials");
-      this.bindAsArray(peopleRef, "people");
-      this.bindAsArray(eventsRef, "events");
-
-    }
-
-  }
+  //
+  // componentDidMount() {
+  //   if (!this.props.newInterestMode) {
+  //     this.props.fetchInterestResource(this.props.data['.key'], 'chunks');
+  //     // var materialsRef = firebase.database().ref('materials').orderByChild("interest").equalTo(this.props.data['.key']);
+  //     // var peopleRef = firebase.database().ref('people').orderByChild("interest").equalTo(this.props.data['.key']);
+  //     // var eventsRef = firebase.database().ref('events').orderByChild("interest").equalTo(this.props.data['.key']);
+  //     // this.bindAsArray(chunksRef, "chunks");
+  //     // this.bindAsArray(materialsRef, "materials");
+  //     // this.bindAsArray(peopleRef, "people");
+  //     // this.bindAsArray(eventsRef, "events");
+  //
+  //   }
+  //
+  // }
 
   createItem(itemType) {
     var newState = this.state;
@@ -52,10 +43,10 @@ class InterestCard extends Component {
   }
 
   render() {
-
+    console.log('CARD DATA', this.props.interest)
     return (
       <div className="interest-card">
-        <InterestMetadata interestKey={this.props.data['.key']} title={this.props.data.title} newInterestMode={this.props.newInterestMode} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+        <InterestMetadata interestKey={this.props.interest['.key']} title={this.props.interest.title} newInterestMode={this.props.newInterestMode} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
         <Tabs>
           <TabList>
             <Tab>Chunks</Tab>
@@ -64,19 +55,19 @@ class InterestCard extends Component {
             <Tab>Events and Classes</Tab>
           </TabList>
           <TabPanel>
-            <MasterDetail items={this.state.chunks} itemType={"chunks"} createItem={this.createItem.bind(this)}
+            <MasterDetail items={this.props.interest.chunks || []} itemType={"chunks"} createItem={this.createItem.bind(this)}
                           saveInterestResource={this.props.saveInterestResource} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.state.materials} itemType={"materials"} createItem={this.createItem.bind(this)}
+            <MasterDetail items={this.props.interest.materials || []} itemType={"materials"} createItem={this.createItem.bind(this)}
                           saveInterestResource={this.props.saveInterestResource} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.state.people} itemType={"people"} createItem={this.createItem.bind(this)}
+            <MasterDetail items={this.props.interest.people || []} itemType={"people"} createItem={this.createItem.bind(this)}
                           saveInterestResource={this.props.saveInterestResource} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.state.events} itemType={"events"} createItem={this.createItem.bind(this)}
+            <MasterDetail items={this.props.interest.events || []} itemType={"events"} createItem={this.createItem.bind(this)}
                           saveInterestResource={this.props.saveInterestResource} />
           </TabPanel>
         </Tabs>
@@ -86,10 +77,11 @@ class InterestCard extends Component {
 }
 
 InterestCard.propTypes = {
-  data: PropTypes.object,
+  interest: PropTypes.object,
   newInterestMode: PropTypes.bool,
   saveInterestMetadata: PropTypes.func,
-  saveInterestResource: PropTypes.func
+  saveInterestResource: PropTypes.func,
+  fetchInterestResource: PropTypes.func
 }
 
 reactMixin(InterestCard.prototype, reactFireMixin)

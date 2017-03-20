@@ -32,14 +32,18 @@ class App extends Component {
 
   createInterest() {
     this.setState({
-      modalContent: <InterestCard data={{}} newInterestMode={true} saveInterestMetadata={this.saveInterestMetadata} saveInterestResource={this.saveInterestResource.bind(this)} />,
+      modalContent: <InterestCard data={{}} newInterestMode={true}
+                                  saveInterestMetadata={this.saveInterestMetadata}
+                                  saveInterestResource={this.saveInterestResource}
+                                  fetchInterestResource={this.props.fetchInterestResource}
+      />,
       showModal: true
     })
   }
 
   saveInterestMetadata(isNew, data, interestKey) {
 
-    if(isNew) {
+    if (isNew) {
       data.user = firebase.auth().currentUser.uid;
       data.stage = InterestStages.UP_NEXT;
       //fixes bug where this.firebaseRefs.interests doesn't work for some reason in this  condition
@@ -52,9 +56,9 @@ class App extends Component {
   }
 
   saveInterestResource(resourceKey, resourceType, data, interestKey) {
-    debugger
+
     var isNew = !resourceKey;
-    if(isNew) {
+    if (isNew) {
       // newData.user = firebase.auth().currentUser.uid; //TODO: might want to associate resource with user? currently references interest, which is associated with user
 
       //TODO: make resourceType into a config constant application wide
@@ -106,7 +110,9 @@ class App extends Component {
               swapInterests: this.props.swapInterests,
               showModal: this.showModal.bind(this),
               saveInterestMetadata: this.saveInterestMetadata.bind(this),
-              saveInterestResource: this.saveInterestResource.bind(this)
+              saveInterestResource: this.saveInterestResource.bind(this),
+              fetchInterestResource: this.props.fetchInterestResource
+
             })
           )}
 
@@ -118,6 +124,7 @@ class App extends Component {
         >
           {this.state.modalContent}
         </Modal>
+
       </div>
     )
   }

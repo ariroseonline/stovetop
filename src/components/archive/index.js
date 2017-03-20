@@ -10,7 +10,7 @@ class Archive extends Component {
 
   renderArchiveInterests() {
     return this.props.interests.filter((interest) => interest.stage === InterestStages.ARCHIVE).map((archiveInterest, i) => {
-      return <DraggableInterest key={"archive-interest-" + i} data={archiveInterest} draggableItemType={ItemTypes.ARCHIVE_INTEREST} displayComponent={Interest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+      return <DraggableInterest key={"archive-interest-" + i} data={archiveInterest} draggableItemType={ItemTypes.ARCHIVE_INTEREST} displayComponent={Interest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource}  fetchInterestResource={this.props.fetchInterestResource} />
     })
   }
 

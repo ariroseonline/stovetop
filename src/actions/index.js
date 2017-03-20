@@ -26,7 +26,7 @@ export function removeComment(postId, index) {
   }
 }
 
-
+//fetching all of these things is very similar, maybe DRY it up?
 export function fetchInterests() {
   var Interests = firebase.database().ref('interests');
   var UserInterests = Interests.orderByChild("user").equalTo(firebase.auth().currentUser.uid);
@@ -40,7 +40,22 @@ export function fetchInterests() {
       })
     })
   }
+}
 
+export function fetchInterestResource(interestKey, resourceType) {
+
+  var InterestResource = firebase.database().ref(resourceType).orderByChild("interest").equalTo(interestKey);
+  return function(dispatch) {
+    InterestResource.on('value', function(snapshot) {
+      console.log('dispatching FETCH resource', resourceType);
+      dispatch({
+        type: "FETCH_INTEREST_RESOURCE",
+        interestKey: interestKey,
+        resourceType: resourceType,
+        payload: convertFirebaseObjectToArrayOfObjects(snapshot.val())
+      })
+    })
+  }
 }
 
 export function moveInterest(interestKey, stage) {
@@ -54,20 +69,15 @@ export function moveInterest(interestKey, stage) {
 //atomic update to avoid race conditions
 export function swapInterests(interestKey1, interestKey2, stage1, stage2) {
   var Interests = firebase.database().ref('interests');
-  var update = {};
-  update["/" + interestKey1 + "/stage"] = stage1;
-  update["/" + interestKey2 + "/stage"] = stage2;
+  var update = {
+    ["/" + interestKey1 + "/stage"] : stage1,
+    ["/" + interestKey2 + "/stage"] : stage2,
+  };
 
   return function(dispatch) {
     Interests.update(update);
   }
-
 }
-//
-// export function swapInterestStages(toStage, fromStage, currentInterestKey, draggedInterestKey) {
-//   this.firebaseRefs.interests.child(currentInterestKey).update({stage: fromStage});
-//   this.firebaseRefs.interests.child(draggedInterestKey).update({stage: toStage});
-// }
 
 export function saveInterest() {
 

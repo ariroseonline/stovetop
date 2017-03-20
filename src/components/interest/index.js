@@ -7,8 +7,14 @@ import InterestCard from "../interest-card";
 
 class Interest extends Component {
 
+
   handleClick = (e) => {
-    this.props.showModal(<InterestCard data={this.props.data} newInterestMode={false} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />)
+    //TODO: consider DRYing up this InterestCard declaration used in two other places
+    this.props.showModal(<InterestCard data={this.props.data} newInterestMode={false}
+                                       saveInterestMetadata={this.props.saveInterestMetadata}
+                                       saveInterestResource={this.props.saveInterestResource}
+                                       fetchInterestResource={this.props.fetchInterestResource}
+    />)
   }
 
   render() {

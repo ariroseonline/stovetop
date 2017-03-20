@@ -6,5 +6,4 @@ import comments from "./comments";
 import interests from "./interests";
 
 const rootReducer = combineReducers({posts, comments, interests, routing: routerReducer});
-
 export default rootReducer;

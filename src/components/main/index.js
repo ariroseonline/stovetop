@@ -8,8 +8,6 @@ import reactFireMixin from "reactfire"
 import {InterestStages} from "../../Constants"
 
 class Main extends Component {
-
-
   render() {
     return (
         <div className="main">
@@ -18,12 +16,16 @@ class Main extends Component {
                    swapInterests={this.props.swapInterests}
                    showModal={this.props.showModal}
                    saveInterestMetadata={this.props.saveInterestMetadata}
-                   saveInterestResource={this.props.saveInterestResource} />
+                   saveInterestResource={this.props.saveInterestResource}
+                   fetchInterestResource={this.props.fetchInterestResource}
+          />
           <UpNext interests={this.props.interests}
                   moveInterest={this.props.moveInterest}
                   showModal={this.props.showModal}
                   saveInterestMetadata={this.props.saveInterestMetadata}
-                  saveInterestResource={this.props.saveInterestResource}  />
+                  saveInterestResource={this.props.saveInterestResource}
+                  fetchInterestResource={this.props.fetchInterestResource}
+          />
         </div>
     )
   }
@@ -37,6 +39,8 @@ Main.propTypes = {
   saveInterestMetadata: PropTypes.func,
   saveInterestResource: PropTypes.func
 }
+
+
 
 // reactMixin(Main.prototype, reactFireMixin)
 

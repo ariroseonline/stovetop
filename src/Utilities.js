@@ -17,6 +17,9 @@ export function FieldGroup({id, label, help, ...props}) {
 }
 
 export function convertFirebaseObjectToArrayOfObjects(obj) {
+  if(!obj) {
+    return [];
+  }
   var array =  Object.keys(obj).map(function (key) {
     var newArrayValue = obj[key];
     newArrayValue['.key'] = key;

@@ -9,7 +9,7 @@ class Habits extends Component {
 
   renderHabitInterests() {
     return this.props.interests.filter((interest) => interest.stage === InterestStages.HABIT).map((habitInterest, i) => {
-      return <DraggableInterest key={"habit-interest-" + i} data={habitInterest} draggableItemType={ItemTypes.HABIT_INTEREST} displayComponent={Interest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+      return <DraggableInterest key={"habit-interest-" + i} data={habitInterest} draggableItemType={ItemTypes.HABIT_INTEREST} displayComponent={Interest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} fetchInterestResource={this.props.fetchInterestResource} />
     })
   }
 

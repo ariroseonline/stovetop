@@ -39,20 +39,16 @@ class ChunkDetail extends Component {
   // }
 
   componentDidMount() {
-    // var chunksRef = this.props.firebaseRef ||;
-    // console.log(this.props)
-    // var chunkRef = firebase.database().ref('chunks').child(this.props.item['.key'])
-    // var chunkResourcesRef = chunkRef.child('resources');
-    // this.bindAsArray(chunkResourcesRef, "resources");
+
     //convert to firebase object to array
     //this is crazy, making a firebase call for every resource in list to get metadata...but it's the best way to make sure you get updated resource data without saving to potentially unlimited places on resource update
-    var chunksRef = firebase.database().ref('chunks').child(this.props.item['.key'])
-    chunksRef.on('value', (snapshot) => {
-      console.log('SNAPSHOT', snapshot.val())
-      this.setState({
-        resources:snapshot.val()
-      })
-    })
+    // var chunksRef = firebase.database().ref('chunks').child(this.props.item['.key'])
+    // chunksRef.on('value', (snapshot) => {
+    //   console.log('SNAPSHOT', snapshot.val())
+    //   this.setState({
+    //     resources:snapshot.val()
+    //   })
+    // })
   }
 
 
@@ -99,7 +95,7 @@ class ChunkDetail extends Component {
     console.log(resource.name);
     return (
       <ListGroupItem key={i}>
-        {resource.name}
+        {resource[".key"]}
       </ListGroupItem>
     )
   }

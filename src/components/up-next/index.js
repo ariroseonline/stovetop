@@ -14,23 +14,6 @@ class UpNext extends Component {
       interests: []
     }
   }
-  //
-  // componentDidMount() {
-  //   var upNextInterestsRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/interests").orderByChild("stage").equalTo(InterestStages.UP_NEXT);
-  //   upNextInterestsRef.on("value", function(snapshot) {
-  //     var items = [];
-  //
-  //     snapshot.forEach(function(childSnapshot) {
-  //       var childKey = childSnapshot.key;
-  //       var childData = childSnapshot.val();
-  //       items.push(<UpNextInterest key={childKey} data={childData} />)
-  //     }.bind(this));
-  //
-  //     this.setState({items: items});
-  //
-  //   }.bind(this));
-  // }
-
 
   dropInterestOnUpNext(interestKey, stage) {
     this.props.moveInterest(interestKey, InterestStages.UP_NEXT);
@@ -50,7 +33,7 @@ class UpNext extends Component {
 
   renderUpNextInterests() {
     return this.props.interests.filter((interest) => interest.stage === InterestStages.UP_NEXT).map((upNextInterest, i) => {
-      return <DraggableInterest key={"up-next-interest-" + i} data={upNextInterest} draggableItemType={ItemTypes.UP_NEXT_INTEREST} displayComponent={Interest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+      return <DraggableInterest key={"up-next-interest-" + i} data={upNextInterest} draggableItemType={ItemTypes.UP_NEXT_INTEREST} displayComponent={Interest} showModal={this.props.showModal} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource}  fetchInterestResource={this.props.fetchInterestResource} />
     })
   }
 
