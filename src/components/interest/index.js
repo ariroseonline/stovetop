@@ -3,17 +3,18 @@ import './style.css';
 import {ItemTypes} from "../../Constants";
 import {DragSource} from "react-dnd";
 // import Modal from "react-modal";
-import InterestCard from "../interest-card";
+import InterestCardContainer from "../interest-card-container";
 
 class Interest extends Component {
 
 
   handleClick = (e) => {
     //TODO: consider DRYing up this InterestCard declaration used in two other places
-    this.props.showModal(<InterestCard data={this.props.data} newInterestMode={false}
-                                       saveInterestMetadata={this.props.saveInterestMetadata}
-                                       saveInterestResource={this.props.saveInterestResource}
-                                       fetchInterestResource={this.props.fetchInterestResource}
+    this.props.showModal(<InterestCardContainer interest={this.props.interest}
+                                                newInterestMode={false}
+                                                saveInterestMetainterest={this.props.saveInterestMetainterest}
+                                                saveInterestResource={this.props.saveInterestResource}
+                                                fetchInterestResource={this.props.fetchInterestResource}
     />)
   }
 
@@ -27,7 +28,7 @@ class Interest extends Component {
           <div onClick={this.handleClick} style={{opacity: isDragging ? 0.5 : 1}}
                className="up-next-interest panel panel-default">
             <div className="panel-heading">
-              <h3 className="panel-title">{this.props.data.title}</h3>
+              <h3 className="panel-title">{this.props.interest.title}</h3>
             </div>
             <div className="panel-body">
               Here is the goal
@@ -44,7 +45,7 @@ class Interest extends Component {
 }
 
 Interest.propTypes = {
-  data: PropTypes.object,
+  interest: PropTypes.object,
   connectDragSource: PropTypes.func,
   isDragging: PropTypes.bool,
   showModal: PropTypes.func,

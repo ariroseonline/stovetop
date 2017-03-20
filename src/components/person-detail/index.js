@@ -29,7 +29,7 @@ class PersonDetail extends Component {
 
 PersonDetail.propTypes = {
   item: PropTypes.object,
-  itemType: PropTypes.string,
+  interestResourceType: PropTypes.string,
   newItemMode: PropTypes.bool,
   saveInterestResource: PropTypes.func
 }

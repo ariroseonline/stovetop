@@ -30,7 +30,7 @@ class EventDetail extends Component {
 
 EventDetail.propTypes = {
   item: PropTypes.object,
-  itemType: PropTypes.string,
+  interestResourceType: PropTypes.string,
   newItemMode: PropTypes.bool,
   saveInterestResource: PropTypes.func
 }

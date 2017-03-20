@@ -1,8 +1,8 @@
 export default {
   beginDrag(props, monitor) {
     return {
-      interestKey: props.data['.key'],
-      stage: props.data.stage
+      interestKey: props.interest['.key'],
+      stage: props.interest.stage
     };
   }
   //

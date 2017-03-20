@@ -13,29 +13,22 @@ class InterestCardContainer extends Component {
 
   componentDidMount() {
     if (!this.props.newInterestMode) {
-      this.props.fetchInterestResource(this.props.data['.key'], 'chunks');
-      this.props.fetchInterestResource(this.props.data['.key'], 'materials');
-      this.props.fetchInterestResource(this.props.data['.key'], 'people');
-      this.props.fetchInterestResource(this.props.data['.key'], 'events');
-      // var materialsRef = firebase.database().ref('materials').orderByChild("interest").equalTo(this.props.data['.key']);
-      // var peopleRef = firebase.database().ref('people').orderByChild("interest").equalTo(this.props.data['.key']);
-      // var eventsRef = firebase.database().ref('events').orderByChild("interest").equalTo(this.props.data['.key']);
-      // this.bindAsArray(chunksRef, "chunks");
-      // this.bindAsArray(materialsRef, "materials");
-      // this.bindAsArray(peopleRef, "people");
-      // this.bindAsArray(eventsRef, "events");
+      this.props.fetchInterestResource(this.props.interest['.key'], 'chunks');
+      this.props.fetchInterestResource(this.props.interest['.key'], 'materials');
+      this.props.fetchInterestResource(this.props.interest['.key'], 'people');
+      this.props.fetchInterestResource(this.props.interest['.key'], 'events');
     }
   }
 
   render() {
-    var interestKey = this.props.data['.key'];
+    var interestKey = this.props.interest['.key'];
     var interest = this.props.interests.find(function(interest) { return interest['.key'] === interestKey })
     return <InterestCard interest={interest} />
   }
 }
 
 InterestCardContainer.propTypes = {
-  data: PropTypes.object,
+  interest: PropTypes.object,
   newInterestMode: PropTypes.bool,
   saveInterestMetadata: PropTypes.func,
   saveInterestResource: PropTypes.func,

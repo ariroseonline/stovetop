@@ -27,42 +27,7 @@ class ChunkDetail extends Component {
       resources: []
     }
     this.onUpdate = this.updateField.bind(this);
-
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //     //TODO: check to see if you need this in componentWillReceiveProps
-  //     this.setState({
-  //       chunk: nextProps.item
-  //     });
-  //
-  // }
-
-  componentDidMount() {
-
-    //convert to firebase object to array
-    //this is crazy, making a firebase call for every resource in list to get metadata...but it's the best way to make sure you get updated resource data without saving to potentially unlimited places on resource update
-    // var chunksRef = firebase.database().ref('chunks').child(this.props.item['.key'])
-    // chunksRef.on('value', (snapshot) => {
-    //   console.log('SNAPSHOT', snapshot.val())
-    //   this.setState({
-    //     resources:snapshot.val()
-    //   })
-    // })
-  }
-
-
-
-  componentWillReceiveProps(newProps) {
-    if(newProps.item['.key']) {
-      // var chunkRef = firebase.database().ref('chunks').child(newProps.item['.key'])
-      // var chunkResourcesRef = chunkRef.child('resources');
-      // this.bindAsArray(chunkResourcesRef, "resources");
-    }
-    // var chunksRef = firebase.database().ref('chunks').orderByChild("interest").equalTo(this.props.item.interest);
-
-  }
-
 
   updateField(e) {
     var attribute = e.target.dataset.itemAttribute;
@@ -78,6 +43,7 @@ class ChunkDetail extends Component {
   // getResources(item) {
   //   return _.merge(item.materials, item.people, item.events);
   // }
+
   renderResourceList(resourceList, i) {
     return (
       <Col xs={4} key={i}>
@@ -128,7 +94,7 @@ class ChunkDetail extends Component {
 
 ChunkDetail.propTypes = {
   item: PropTypes.object,
-  itemType: PropTypes.string,
+  interestResourceType: PropTypes.string,
   newItemMode: PropTypes.bool,
   saveInterestResource: PropTypes.func
 }

@@ -10,8 +10,8 @@ class Detail extends Component {
     super(props);
   }
 
-  getDetailTemplate(item, itemType) {
-    switch(itemType) {
+  getDetailTemplate(item, interestResourceType) {
+    switch(interestResourceType) {
       case "chunks":
         return <ChunkDetail item={item} saveInterestResource={this.props.saveInterestResource} />;
         break;
@@ -28,14 +28,14 @@ class Detail extends Component {
   }
 
   render() {
-    var {item, itemType, newItemMode } = this.props;
-    return this.getDetailTemplate(item, itemType, newItemMode)
+    var {item, interestResourceType, newItemMode } = this.props;
+    return this.getDetailTemplate(item, interestResourceType, newItemMode)
   }
 }
 
 Detail.propTypes = {
   item: PropTypes.object,
-  itemType: PropTypes.string,
+  interestResourceType: PropTypes.string,
   newItemMode: PropTypes.bool,
   saveInterestResource: PropTypes.func
 }

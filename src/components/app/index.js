@@ -12,7 +12,7 @@ import firebase from "firebase"
 import reactMixin from "react-mixin"
 import reactFireMixin from "reactfire"
 import Modal from "react-modal";
-import InterestCard from "../interest-card";
+import InterestCardContainer from "../interest-card-container";
 
 class App extends Component {
 
@@ -32,10 +32,11 @@ class App extends Component {
 
   createInterest() {
     this.setState({
-      modalContent: <InterestCard data={{}} newInterestMode={true}
-                                  saveInterestMetadata={this.saveInterestMetadata}
-                                  saveInterestResource={this.saveInterestResource}
-                                  fetchInterestResource={this.props.fetchInterestResource}
+      modalContent: <InterestCardContainer interest={{}}
+                                           newInterestMode={true}
+                                           saveInterestMetainterest={this.props.saveInterestMetainterest}
+                                           saveInterestResource={this.props.saveInterestResource}
+                                           fetchInterestResource={this.props.fetchInterestResource}
       />,
       showModal: true
     })

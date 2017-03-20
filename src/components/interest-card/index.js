@@ -12,28 +12,17 @@ import InterestMetadata from "../interest-metadata";
 class InterestCard extends Component {
   constructor(props) {
     super(props);
-  }
-  //
-  // componentDidMount() {
-  //   if (!this.props.newInterestMode) {
-  //     this.props.fetchInterestResource(this.props.data['.key'], 'chunks');
-  //     // var materialsRef = firebase.database().ref('materials').orderByChild("interest").equalTo(this.props.data['.key']);
-  //     // var peopleRef = firebase.database().ref('people').orderByChild("interest").equalTo(this.props.data['.key']);
-  //     // var eventsRef = firebase.database().ref('events').orderByChild("interest").equalTo(this.props.data['.key']);
-  //     // this.bindAsArray(chunksRef, "chunks");
-  //     // this.bindAsArray(materialsRef, "materials");
-  //     // this.bindAsArray(peopleRef, "people");
-  //     // this.bindAsArray(eventsRef, "events");
-  //
-  //   }
-  //
-  // }
 
-  createItem(itemType) {
+    this.state = {
+
+    }
+  }
+
+  createInterestResource(interestResourceType) {
     var newState = this.state;
     var newId = getRandomId(20);
     //push a blank new record
-    newState[itemType].push({
+    newState[interestResourceType].push({
       id: newId,
       name: "New Item"
     });
@@ -55,19 +44,19 @@ class InterestCard extends Component {
             <Tab>Events and Classes</Tab>
           </TabList>
           <TabPanel>
-            <MasterDetail items={this.props.interest.chunks || []} itemType={"chunks"} createItem={this.createItem.bind(this)}
+            <MasterDetail items={this.props.interest.chunks || []} interestResourceType={"chunks"} createInterestResource={this.createInterestResource.bind(this)}
                           saveInterestResource={this.props.saveInterestResource} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.props.interest.materials || []} itemType={"materials"} createItem={this.createItem.bind(this)}
+            <MasterDetail items={this.props.interest.materials || []} interestResourceType={"materials"} createInterestResource={this.createInterestResource.bind(this)}
                           saveInterestResource={this.props.saveInterestResource} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.props.interest.people || []} itemType={"people"} createItem={this.createItem.bind(this)}
+            <MasterDetail items={this.props.interest.people || []} interestResourceType={"people"} createInterestResource={this.createInterestResource.bind(this)}
                           saveInterestResource={this.props.saveInterestResource} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.props.interest.events || []} itemType={"events"} createItem={this.createItem.bind(this)}
+            <MasterDetail items={this.props.interest.events || []} interestResourceType={"events"} createInterestResource={this.createInterestResource.bind(this)}
                           saveInterestResource={this.props.saveInterestResource} />
           </TabPanel>
         </Tabs>
