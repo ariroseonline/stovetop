@@ -17,14 +17,14 @@ class Main extends Component {
                    showModal={this.props.showModal}
                    saveInterestMetadata={this.props.saveInterestMetadata}
                    saveInterestResource={this.props.saveInterestResource}
-                   fetchInterestResource={this.props.fetchInterestResource}
+                   fetchInterestResourceType={this.props.fetchInterestResourceType}
           />
           <UpNext interests={this.props.interests}
                   moveInterest={this.props.moveInterest}
                   showModal={this.props.showModal}
                   saveInterestMetadata={this.props.saveInterestMetadata}
                   saveInterestResource={this.props.saveInterestResource}
-                  fetchInterestResource={this.props.fetchInterestResource}
+                  fetchInterestResourceType={this.props.fetchInterestResourceType}
           />
         </div>
     )

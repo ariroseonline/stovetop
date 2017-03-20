@@ -10,7 +10,7 @@ class BurnerInterest extends Component {
                                        newInterestMode={false}
                                        saveInterestMetainterest={this.props.saveInterestMetainterest}
                                        saveInterestResource={this.props.saveInterestResource}
-                                       fetchInterestResource={this.props.fetchInterestResource}
+                                       fetchInterestResourceType={this.props.fetchInterestResourceType}
     />)
   }
 
@@ -29,7 +29,7 @@ BurnerInterest.propTypes = {
   showModal: PropTypes.func,
   saveInterestMetadata: PropTypes.func,
   saveInterestResource: PropTypes.func,
-  fetchInterestResource: PropTypes.func
+  fetchInterestResourceType: PropTypes.func
 };
 
 export default BurnerInterest;

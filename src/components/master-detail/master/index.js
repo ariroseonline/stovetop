@@ -25,34 +25,19 @@ class Master extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    // //not great set up repeating the items part
-    // if(nextProps.items.length) {
-    //   var activeItem = nextProps.items[0];
-    //
-    //   this.setState({
-    //     items: nextProps.items,
-    //     activeItemId: activeItem['.key']
-    //   })
-    // }
-
-
-  }
-
   onItemClick(selectedItemId) {
     this.setState({ activeItemId : selectedItemId });
   }
 
   onAddItemClick() {
-    var newItemId = this.props.createInterestResource(this.props.interestResourceType);
-    this.setState({ activeItemId : newItemId, newItemMode: true });
-  }
-
-  saveInterestResource() {
-    this.props.saveInterestResource(this.props.interestResourceType);
+    this.props.createItem(this.props.itemType);
+    //maybe reimplement after redux conversion
+    // var newItemId = this.props.createItem();
+    // this.setState({ activeItemId : newItemId, newItemMode: true });
   }
 
   render() {
+
     var items = this.props.items,
         activeItem = items.find(item => item['.key'] === this.state.activeItemId) || items[0] || {};
 
@@ -62,7 +47,7 @@ class Master extends Component {
         <Col xs={3}>
           <ListGroup>
             {items.map(function(item, i){
-              var header = (this.props.interestResourceType === "chunks" ? (i+1) + "." : "") + item.name;
+              var header = (this.props.itemType === "chunks" ? (i+1) + "." : "") + item.name;
               var subheader = "5 resources";
 
               return (
@@ -75,7 +60,7 @@ class Master extends Component {
           <Button block onClick={this.onAddItemClick.bind(this)}>Add New Item</Button>
         </Col>
         <Col xs={9}>
-          <Detail item={activeItem} interestResourceType={this.props.interestResourceType} newItemMode={this.state.newItemMode} saveInterestResource={this.props.saveInterestResource} />
+          <Detail item={activeItem} itemType={this.props.itemType} newItemMode={this.state.newItemMode} saveItem={this.props.saveItem} />
         </Col>
       </Row>
     )
@@ -84,9 +69,9 @@ class Master extends Component {
 
 Master.propTypes = {
   items: PropTypes.array,
-  interestResourceType: PropTypes.string,
-  createInterestResource: PropTypes.func,
-  saveInterestResource: PropTypes.func
+  itemType: PropTypes.string,
+  createItem: PropTypes.func,
+  saveItem: PropTypes.func
 }
 
 export default Master;

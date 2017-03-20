@@ -37,7 +37,8 @@ class ChunkDetail extends Component {
   }
 
   saveChanges() {
-    this.props.saveInterestResource();
+    //not done yet
+    // this.props.saveInterestResource();
   }
 
   // getResources(item) {

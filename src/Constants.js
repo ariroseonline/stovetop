@@ -18,6 +18,22 @@ export const InterestStages = {
   HABIT: "habit"
 }
 
+//dynamically generate burners based on config #
+export const InterestResourceStubs = {
+  CHUNKS: {
+    name: "BLAH"
+  },
+  MATERIALS: {
+    name: "BLAH"
+  },
+  PEOPLE: {
+    name: "BLAH"
+  },
+  EVENTS: {
+    name: "BLAH"
+  }
+}
+
 
 export const getRandomId = function (length) {
   var x = 0;

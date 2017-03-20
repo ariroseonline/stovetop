@@ -18,21 +18,10 @@ class InterestCard extends Component {
     }
   }
 
-  createInterestResource(interestResourceType) {
-    var newState = this.state;
-    var newId = getRandomId(20);
-    //push a blank new record
-    newState[interestResourceType].push({
-      id: newId,
-      name: "New Item"
-    });
-
-    this.setState(newState);
-    return newId;
-  }
-
   render() {
     console.log('CARD DATA', this.props.interest)
+    var interest = this.props.interest;
+    console.log('blah', interest.chunks)
     return (
       <div className="interest-card">
         <InterestMetadata interestKey={this.props.interest['.key']} title={this.props.interest.title} newInterestMode={this.props.newInterestMode} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
@@ -44,20 +33,20 @@ class InterestCard extends Component {
             <Tab>Events and Classes</Tab>
           </TabList>
           <TabPanel>
-            <MasterDetail items={this.props.interest.chunks || []} interestResourceType={"chunks"} createInterestResource={this.createInterestResource.bind(this)}
-                          saveInterestResource={this.props.saveInterestResource} />
+            <MasterDetail items={interest.chunks || []} itemType={"chunks"} createItem={this.props.createInterestResource}
+                          saveItem={this.props.saveInterestResource} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.props.interest.materials || []} interestResourceType={"materials"} createInterestResource={this.createInterestResource.bind(this)}
-                          saveInterestResource={this.props.saveInterestResource} />
+            <MasterDetail items={interest.materials || []} itemType={"materials"} createItem={this.props.createInterestResource}
+                          saveItem={this.props.saveInterestResource} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.props.interest.people || []} interestResourceType={"people"} createInterestResource={this.createInterestResource.bind(this)}
-                          saveInterestResource={this.props.saveInterestResource} />
+            <MasterDetail items={interest.people || []} itemType={"people"} createItem={this.props.createInterestResource}
+                          saveItem={this.props.saveInterestResource} />
           </TabPanel>
           <TabPanel>
-            <MasterDetail items={this.props.interest.events || []} interestResourceType={"events"} createInterestResource={this.createInterestResource.bind(this)}
-                          saveInterestResource={this.props.saveInterestResource} />
+            <MasterDetail items={interest.events || []} itemType={"events"} createItem={this.props.createInterestResource}
+                          saveItem={this.props.saveInterestResource} />
           </TabPanel>
         </Tabs>
       </div>
@@ -70,7 +59,7 @@ InterestCard.propTypes = {
   newInterestMode: PropTypes.bool,
   saveInterestMetadata: PropTypes.func,
   saveInterestResource: PropTypes.func,
-  fetchInterestResource: PropTypes.func
+  fetchInterestResourceType: PropTypes.func
 }
 
 reactMixin(InterestCard.prototype, reactFireMixin)

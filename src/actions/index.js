@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import { convertFirebaseObjectToArrayOfObjects } from "../Utilities";
-
+import { InterestResourceStubs } from "../Constants";
 //increment
 export function increment(index) {
   return {
@@ -42,16 +42,16 @@ export function fetchInterests() {
   }
 }
 
-export function fetchInterestResource(interestKey, resourceType) {
+export function fetchInterestResourceType(interestKey, interestResourceType) {
 
-  var InterestResource = firebase.database().ref(resourceType).orderByChild("interest").equalTo(interestKey);
+  var InterestResource = firebase.database().ref(interestResourceType).orderByChild("interest").equalTo(interestKey);
   return function(dispatch) {
     InterestResource.on('value', function(snapshot) {
-      console.log('dispatching FETCH resource', resourceType);
+      console.log('dispatching FETCH resource', interestResourceType);
       dispatch({
-        type: "FETCH_INTEREST_RESOURCE",
+        type: "FETCH_INTEREST_RESOURCE_TYPE",
         interestKey: interestKey,
-        resourceType: resourceType,
+        interestResourceType: interestResourceType,
         payload: convertFirebaseObjectToArrayOfObjects(snapshot.val())
       })
     })
@@ -76,6 +76,26 @@ export function swapInterests(interestKey1, interestKey2, stage1, stage2) {
 
   return function(dispatch) {
     Interests.update(update);
+  }
+}
+
+export function createInterestResource(interestKey, interestResourceType) {
+  // var newState = this.state;
+  // var newId = getRandomId(20);
+  // //push a blank new record to store.
+  // // newState[interestResourceType].push({
+  // //   id: newId,
+  // //   name: "New Item"
+  // // });
+  // //
+  // // this.setState(newState);
+  // this.props.createInterestResource(interestResourceType)
+  // return newId;
+  return {
+    type: "CREATE_INTEREST_RESOURCE",
+    interestKey: interestKey,
+    interestResourceType: interestResourceType,
+    payload: InterestResourceStubs[interestResourceType.toUpperCase()] //TODO: make this a passed-in  object type with fields for that particular interest resource (blank values)
   }
 }
 

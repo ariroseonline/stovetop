@@ -14,7 +14,7 @@ class Interest extends Component {
                                                 newInterestMode={false}
                                                 saveInterestMetainterest={this.props.saveInterestMetainterest}
                                                 saveInterestResource={this.props.saveInterestResource}
-                                                fetchInterestResource={this.props.fetchInterestResource}
+                                                fetchInterestResourceType={this.props.fetchInterestResourceType}
     />)
   }
 
