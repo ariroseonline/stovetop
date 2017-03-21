@@ -2,8 +2,8 @@ import React, {Component, PropTypes} from "react"
 import './style.css';
 import * as actionCreators from "../../actions/";
 import InterestCard from "../interest-card";
-import { connect }  from "react-redux";
-import { bindActionCreators } from "redux";
+import {connect}  from "react-redux";
+import {bindActionCreators} from "redux";
 
 
 function mapStateToProps(state) {
@@ -24,10 +24,10 @@ class InterestCardContainer extends Component {
 
   componentDidMount() {
     if (!this.props.newInterestMode) {
-      this.props.fetchInterestResourceType(this.props.interest['.key'], 'chunks');
-      this.props.fetchInterestResourceType(this.props.interest['.key'], 'materials');
-      this.props.fetchInterestResourceType(this.props.interest['.key'], 'people');
-      this.props.fetchInterestResourceType(this.props.interest['.key'], 'events');
+      this.props.fetchInterestResourceType(this.props.interestKey, 'chunks');
+      this.props.fetchInterestResourceType(this.props.interestKey, 'materials');
+      this.props.fetchInterestResourceType(this.props.interestKey, 'people');
+      this.props.fetchInterestResourceType(this.props.interestKey, 'events');
     }
   }
 
@@ -48,15 +48,22 @@ class InterestCardContainer extends Component {
     this.props.createInterestResource(this.props.interest['.key'], interestResourceType);
   }
 
+  getInterest(interestKey) {
+    return this.props.interests.find(function (interest) {
+      return interest['.key'] === interestKey
+    });
+  }
+
   render() {
-    var interestKey = this.props.interest['.key'];
-    var interest = this.props.interests.find(function(interest) { return interest['.key'] === interestKey })
-    return <InterestCard interest={interest} createInterestResource={this.createInterestResource.bind(this)} saveInterestResource={this.props.saveInterestResource} />
+    var interest = this.props.newInterestMode ? {} : this.getInterest(this.props.interestKey);
+    return <InterestCard interest={interest} createInterestResource={this.createInterestResource.bind(this)}
+                         saveInterestResource={this.props.saveInterestResource} newInterestMode={this.props.newInterestMode}/>
   }
 }
 
 InterestCardContainer.propTypes = {
-  interest: PropTypes.object,
+  interestKey: PropTypes.string,
+  interests: PropTypes.array,
   newInterestMode: PropTypes.bool,
   saveInterestMetadata: PropTypes.func,
   saveInterestResource: PropTypes.func,

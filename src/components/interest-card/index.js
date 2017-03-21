@@ -21,10 +21,9 @@ class InterestCard extends Component {
   render() {
     console.log('CARD DATA', this.props.interest)
     var interest = this.props.interest;
-    console.log('blah', interest.chunks)
     return (
       <div className="interest-card">
-        <InterestMetadata interestKey={this.props.interest['.key']} title={this.props.interest.title} newInterestMode={this.props.newInterestMode} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
+        <InterestMetadata interestKey={interest['.key']} title={interest.title} newInterestMode={this.props.newInterestMode} saveInterestMetadata={this.props.saveInterestMetadata} saveInterestResource={this.props.saveInterestResource} />
         <Tabs>
           <TabList>
             <Tab>Chunks</Tab>

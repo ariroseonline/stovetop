@@ -6,7 +6,7 @@ class BurnerInterest extends Component {
 
   handleClick = (e) => {
     //think about just passing a string instead of the element, so you don't have to deal with all these props in many locations and instead just in original showModal
-    this.props.showModal(<InterestCardContainer interest={this.props.interest}
+    this.props.showModal(<InterestCardContainer interestKey={this.props.interest['.key']}
                                        newInterestMode={false}
                                        saveInterestMetainterest={this.props.saveInterestMetainterest}
                                        saveInterestResource={this.props.saveInterestResource}

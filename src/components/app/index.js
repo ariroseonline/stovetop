@@ -32,8 +32,7 @@ class App extends Component {
 
   createInterest() {
     this.setState({
-      modalContent: <InterestCardContainer interest={{}}
-                                           newInterestMode={true}
+      modalContent: <InterestCardContainer newInterestMode={true}
                                            saveInterestMetainterest={this.props.saveInterestMetainterest}
                                            saveInterestResource={this.props.saveInterestResource}
                                            fetchInterestResourceType={this.props.fetchInterestResourceType}

@@ -10,7 +10,7 @@ class Interest extends Component {
 
   handleClick = (e) => {
     //TODO: consider DRYing up this InterestCard declaration used in two other places
-    this.props.showModal(<InterestCardContainer interest={this.props.interest}
+    this.props.showModal(<InterestCardContainer interestKey={this.props.interest['.key']}
                                                 newInterestMode={false}
                                                 saveInterestMetainterest={this.props.saveInterestMetainterest}
                                                 saveInterestResource={this.props.saveInterestResource}
