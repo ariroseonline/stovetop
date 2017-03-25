@@ -8,7 +8,6 @@ import reactMixin from "react-mixin";
 import reactFireMixin from "reactfire";
 import InterestMetadata from "../interest-metadata";
 
-
 class InterestCard extends Component {
   constructor(props) {
     super(props);

@@ -11,6 +11,7 @@ import AppContainer from "./components/app-container";
 import Main from "./components/main";
 import Archive from "./components/archive";
 import Habits from "./components/habits";
+import Rolodex from "./components/rolodex";
 import Account from "./components/account";
 import Login from "./components/login-register/login";
 import Logout from "./components/login-register/logout";
@@ -81,6 +82,7 @@ ReactDOM.render((
         <IndexRoute component={Main} onEnter={requireAuth}/>
         <Route component={Archive} path="/archive" onEnter={requireAuth} stage={ InterestStages.ARCHIVE }/>
         <Route component={Habits} path="/habits" onEnter={requireAuth} stage={ InterestStages.HABIT }/>
+        <Route component={Rolodex} path="/rolodex" onEnter={requireAuth}/>
         <Route component={Account} path="/account" onEnter={requireAuth}/>
         <Route component={Login} path="/login"/>
         <Route component={Logout} path="/logout"/>

@@ -8,7 +8,8 @@ function mapStateToProps(state) {
   return {
     posts: state.posts,
     comments: state.comments,
-    interests: state.interests
+    interests: state.interests,
+    correspondences: state.correspondences
   }
 }
 

@@ -1,0 +1,33 @@
+$color: #ff4223; // The color you want to use
+$step: 1; // Set the initial step value
+
+//The "<= #" determines the number of steps you want this while loop to create
+
+@while $step <=10  {
+
+  // darkens color step by step
+  .correspondences li:nth-child(#{$step}) {
+    // Here we use the SASS darken function and darken our color by 2% each time.  Set this to whatever percentage you like.
+    background-color: adjust_hue($color, ($step * 5%));
+  }
+
+  // Increment the step up by 1 so it continues until you've reached 10 (which you specified at the beginning of the function)
+  $step: $step + 1;
+}
+
+.correspondences li {
+  border: none;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.28);
+
+  .btn {
+    background: none;
+    border: 1px solid white;
+    color: white;
+  }
+  .countdown {
+    float: left;
+    margin-right: 30px;
+  }
+}
+

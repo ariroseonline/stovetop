@@ -26,7 +26,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchInterests();
-    // var interestsRef = firebase.database().ref('interests').orderByChild("user").equalTo(firebase.auth().currentUser.uid);
+    // var interestsRef = firebase.database().ref('interests').orderByChild("uid").equalTo(firebase.auth().currentUser.uid);
     // this.bindAsArray(interestsRef, "interests");
   }
 
@@ -44,7 +44,7 @@ class App extends Component {
   saveInterestMetadata(isNew, data, interestKey) {
 
     if (isNew) {
-      data.user = firebase.auth().currentUser.uid;
+      data.uid = firebase.auth().currentUser.uid;
       data.stage = InterestStages.UP_NEXT;
       //fixes bug where this.firebaseRefs.interests doesn't work for some reason in this  condition
       var interestsRef = firebase.database().ref('interests');
@@ -59,7 +59,7 @@ class App extends Component {
 
     var isNew = !interestResourceKey;
     if (isNew) {
-      // newData.user = firebase.auth().currentUser.uid; //TODO: might want to associate resource with user? currently references interest, which is associated with user
+      // newData.uid = firebase.auth().currentUser.uid; //TODO: might want to associate resource with user? currently references interest, which is associated with user
 
       //TODO: make interestResourceType into a config constant application wide
       //a) must push to a /{resource} endpoint
@@ -101,18 +101,24 @@ class App extends Component {
           <li><ArchiveLink moveInterest={this.props.moveInterest}/></li>
           <li><HabitsLink moveInterest={this.props.moveInterest}/></li>
           <li><Link to="/account">Account</Link></li>
+          <li><Link to="/rolodex">Rolodex</Link></li>
         </ul>
         <div className="content">
           {/*Complicated way of getting props to work with Router children of App*/}
           { React.Children.map(this.props.children, child => React.cloneElement(child, {
               interests: this.props.interests,
+              correspondences: this.props.correspondences,
               moveInterest: this.props.moveInterest,
               swapInterests: this.props.swapInterests,
               showModal: this.showModal.bind(this),
               saveInterestMetadata: this.saveInterestMetadata.bind(this),
               saveInterestResource: this.saveInterestResource.bind(this),
-              fetchInterestResourceType: this.props.fetchInterestResourceType
-
+              fetchInterestResourceType: this.props.fetchInterestResourceType,
+              fetchCorrespondences: this.props.fetchCorrespondences,
+              completeCorrespondence: this.props.completeCorrespondence,
+              snoozeCorrespondence: this.props.snoozeCorrespondence,
+              fetchContacts: this.props.fetchContacts,
+              saveContact: this.props.saveContact
             })
           )}
 
