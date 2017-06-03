@@ -19,7 +19,7 @@ import {
   Button
 } from "react-bootstrap";
 
-class NewContact extends Component {
+class NewRecipient extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -168,7 +168,7 @@ class NewContact extends Component {
                 <option value={"Yearly"}>Yearly</option>
               </FormControl>
             </FormGroup>
-            {/*Put specialreminders add feature after contact addition */}
+            {/*Put specialreminders add feature after recipient addition */}
 
             {/*<ControlLabel>Special Reminders <Glyphicon glyph="plus" className="pull-right"*/}
             {/*onClick={this.addSpecialReminder.bind(this)}/></ControlLabel>*/}
@@ -205,9 +205,9 @@ class NewContact extends Component {
   }
 }
 
-NewContact.propTypes = {
+NewRecipient.propTypes = {
   save: PropTypes.func,
   closeModal: PropTypes.func
 }
 
-export default NewContact
+export default NewRecipient

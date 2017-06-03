@@ -10,7 +10,7 @@ function mapStateToProps(state) {
     comments: state.comments,
     interests: state.interests,
     reminders: state.reminders,
-    contacts: state.contacts
+    recipients: state.recipients
   }
 }
 

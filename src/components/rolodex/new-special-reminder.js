@@ -24,7 +24,7 @@ class NewSpecialReminder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipient: "",
+      recipientKey: "",
       title: "",
       date: new Date().toISOString(),
       repeatYearly: false
@@ -38,8 +38,8 @@ class NewSpecialReminder extends Component {
   //TODO: DRY these updates up
 
   onUpdateRecipient(e) {
-    var newRecipient = e.target.value;
-    this.setState({recipient: newRecipient});
+    var newRecipientKey = e.target.value;
+    this.setState({recipientKey: newRecipientKey });
   }
 
   onUpdateTitle(e) {
@@ -58,8 +58,14 @@ class NewSpecialReminder extends Component {
   }
 
   save() {
-    var {title, date, recursYearly} = this.state;
-    this.props.save({title, date, recursYearly})
+    var {recipientKey, title, date, repeatYearly} = this.state;
+    var recipient = this.props.recipient.find(function(recipient) {
+      return recipient['.key'] === recipientKey
+    });
+
+    var recipientName= recipient.name;
+
+    this.props.save({recipientName, recipientKey, title, date, repeatYearly});
     this.props.closeModal()
   }
 
@@ -73,19 +79,19 @@ class NewSpecialReminder extends Component {
 
             <FormGroup controlId="formRecurrenceTime">
               <ControlLabel>Who</ControlLabel>
-              <FormControl componentClass="select" value={this.state.recipient}
+              <FormControl componentClass="select" value={this.state.recipientKey}
                            onChange={this.onUpdateRecipient.bind(this)}>
                 <option value="" disabled>Please select</option>
 
-                {this.props.contacts.map(function(contact, i) {
-                  return <option key={i} value={contact['.key']}>{contact.name}</option>
+                {this.props.recipient.map(function(recipient, i) {
+                  return <option key={i} value={recipient['.key']}>{recipient.name}</option>
                 })}
 
               </FormControl>
             </FormGroup>
           </Col>
           <Col xs={3}>
-            <FieldGroup id="formTitle" type="text" label="Name"
+            <FieldGroup id="formTitle" type="text" label="Title"
                         placeholder="Birthday, Wedding, etc"
                         value={this.state.title} onChange={this.onUpdateTitle.bind(this)}
             />
@@ -120,7 +126,7 @@ class NewSpecialReminder extends Component {
 
 NewSpecialReminder.propTypes = {
   save: PropTypes.func,
-  contacts: PropTypes.array,
+  recipient: PropTypes.array,
   closeModal: PropTypes.func
 }
 

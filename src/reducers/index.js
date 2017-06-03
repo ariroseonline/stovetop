@@ -5,7 +5,7 @@ import posts from "./posts";
 import comments from "./comments";
 import interests from "./interests";
 import reminders from "./reminders";
-import contacts from "./contacts";
+import recipients from "./recipients";
 
-const rootReducer = combineReducers({posts, comments, interests, reminders, contacts, routing: routerReducer});
+const rootReducer = combineReducers({posts, comments, interests, reminders, recipients, routing: routerReducer});
 export default rootReducer;

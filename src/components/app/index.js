@@ -108,7 +108,7 @@ class App extends Component {
           { React.Children.map(this.props.children, child => React.cloneElement(child, {
               interests: this.props.interests,
               reminders: this.props.reminders,
-              contacts: this.props.contacts,
+              recipients: this.props.recipients,
               moveInterest: this.props.moveInterest,
               swapInterests: this.props.swapInterests,
               showModal: this.showModal.bind(this),
@@ -119,8 +119,8 @@ class App extends Component {
               fetchReminders: this.props.fetchReminders,
               completeReminder: this.props.completeReminder,
               snoozeReminder: this.props.snoozeReminder,
-              fetchContacts: this.props.fetchContacts,
-              saveContact: this.props.saveContact,
+              fetchRecipients: this.props.fetchRecipients,
+              saveRecipient: this.props.saveRecipient,
               saveSpecialReminder: this.props.saveSpecialReminder
             })
           )}

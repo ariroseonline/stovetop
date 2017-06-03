@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react"
 import './style.css';
 import firebase from "firebase"
 var moment = require('moment');
-import NewContact from "./new-contact";
+import NewRecipient from "./new-recipient";
 import NewSpecialReminder from "./new-special-reminder";
 import {Row, Col, InputGroup, FormGroup, FormControl, Glyphicon} from "react-bootstrap";
 
@@ -17,7 +17,7 @@ class Rolodex extends Component {
   componentDidMount() {
     //initialize reactive action
     this.props.fetchReminders();
-    this.props.fetchContacts();
+    this.props.fetchRecipients();
   }
 
   updateSearchQuery(e) {
@@ -67,17 +67,12 @@ class Rolodex extends Component {
     })
   }
 
-  //add new contact from special reminder
-  // addNewContact() {
-  //   this.props.showModal(<NewContact saveContact={this.props.saveContact} />)
-  // }
-
-  newContact () {
-    this.props.showModal(<NewContact closeModal={this.props.closeModal} save={this.props.saveContact}/>)
+  newRecipient () {
+    this.props.showModal(<NewRecipient closeModal={this.props.closeModal} save={this.props.saveRecipient}/>)
   }
 
   newSpecialReminder () {
-    this.props.showModal(<NewSpecialReminder contacts={this.props.contacts} closeModal={this.props.closeModal} save={this.props.saveSpecialReminder}/>)
+    this.props.showModal(<NewSpecialReminder recipients={this.props.recipients} closeModal={this.props.closeModal} save={this.props.saveSpecialReminder}/>)
   }
 
   render() {
@@ -89,15 +84,15 @@ class Rolodex extends Component {
               <FormGroup>
                 <InputGroup>
                     <InputGroup.Addon><Glyphicon glyph="search" /></InputGroup.Addon>
-                    <FormControl type="text" placeholder="Search Contacts" value={this.state.searchQuery} onChange={this.updateSearchQuery.bind(this)} />
+                    <FormControl type="text" placeholder="Search Recipients" value={this.state.searchQuery} onChange={this.updateSearchQuery.bind(this)} />
                 </InputGroup>
               </FormGroup>
             </form>
           </Col>
           <Col xs={6}>
 
-            <button className="btn btn-primary pull-right" onClick={this.newContact.bind(this)}>
-              New Contact
+            <button className="btn btn-primary pull-right" onClick={this.newRecipient.bind(this)}>
+              New Recipient
             </button>
             <button className="btn btn-primary pull-right" onClick={this.newSpecialReminder.bind(this)}>
               New Special Reminder
@@ -120,8 +115,8 @@ class Rolodex extends Component {
     snoozeReminder: PropTypes.func,
     showModal: PropTypes.func,
     closeModal: PropTypes.func,
-    fetchContacts: PropTypes.func,
-    saveContact: PropTypes.func
+    fetchRecipients: PropTypes.func,
+    saveRecipient: PropTypes.func
   }
 
   export default Rolodex
