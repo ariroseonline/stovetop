@@ -35,7 +35,7 @@ export function fetchInterests() {
 
   return function(dispatch) {
     UserInterests.on('value', function(snapshot) {
-      console.log('dispatching FETCH');
+      console.log('dispatching FETCH interests');
       dispatch({
         type: "FETCH_INTERESTS",
         payload: convertFirebaseObjectToArrayOfObjects(snapshot.val())
@@ -112,16 +112,16 @@ export function saveEvent() {
 
 }
 
-export function fetchCorrespondences() {
-  var Correspondences = firebase.database().ref('correspondences');
-  var UserCorrespondences = Correspondences.orderByChild("uid").equalTo(firebase.auth().currentUser.uid);
+export function fetchReminders() {
+  var Reminders = firebase.database().ref('reminders');
+  var UserReminders= Reminders.orderByChild("uid").equalTo(firebase.auth().currentUser.uid);
 
   return function(dispatch) {
-    UserCorrespondences.on('value', function(snapshot) {
-      console.log('dispatching FETCH Correspondences');
+    UserReminders.on('value', function(snapshot) {
+      console.log('dispatching FETCH Reminders');
 
       dispatch({
-        type: "FETCH_CORRESPONDENCES",
+        type: "FETCH_REMINDERS",
         payload: convertFirebaseObjectToArrayOfObjects(snapshot.val())
       })
     })
@@ -134,7 +134,6 @@ export function fetchContacts() {
   return function(dispatch) {
     UserContacts.on('value', function(snapshot) {
       console.log('dispatching FETCH Contacts');
-
       dispatch({
         type: "FETCH_CONTACTS",
         payload: convertFirebaseObjectToArrayOfObjects(snapshot.val())
@@ -144,65 +143,99 @@ export function fetchContacts() {
 }
 
 export function saveContact(contactData) {
+  //CONTACT == RECIPIENT
+  //TODO: important
+  //this actions needs to
+  //a) create the contact
+  //b) create reminders(s) by initializing a recurring reminder and then looking in contactDta for any special reminders and make corr for those two, perhaps use the createReminders action
+  //Wondering if it's better instead to have another action that on-watches on firebase user contacts for (add, changed) then add reminders OR find reminders to that recipient [
+  // throw them out for that contact/recipient and make new reminders (recurring and special) (only throw out recurring if recurrenceTime changed in contactData]
+  // warn user this will start timers all over again for recurring ones if they changed the recurring timewindow, or could be smarter and adjust any recurring reminder in play by DELTA of user change to recurrentTime
   var uid = firebase.auth().currentUser.uid;
   var createdAt = firebase.database.ServerValue.TIMESTAMP;
   var contact = contactData;
 
   contact.uid = uid;
   contact.createdAt = createdAt;
-  return function(dispatch) {
-    firebase.database().ref('contacts').push(contact);
 
+  return function(dispatch) {
+    firebase.database().ref('contacts').push(contact).then(function(contactRef){
+      if(contactData.recurrenceTime.duration) {
+        //create first reminder automatically
+        createReminder(contactRef.key)
+      }
+    });
   }
 
 }
+/*
+export function saveSpecialReminder(specialReminderData) {
+
+  var createdAt = firebase.database.ServerValue.TIMESTAMP;
+  var specialReminder = specialReminderData;
+
+  specialReminder.uid = uid;
+  specialReminder.createdAt = createdAt;
+
+  //createdAT
+  //uid
+  //recipient
+  //recurring (true if yearly)
+  //special true
+
+  return function(dispatch) {
+    firebase.database().ref('contacts').push(contact).then(function(contactRef){
+      if(contactData.recurrenceTime.duration) {
+        //create first reminder automatically
+        createReminder(contactRef.key)
+      }
+    });
+  }
+
+}*/
 
 //TODO: use this later
-export function saveReminder() {
-  // this.props.fetchCorrespondences();
+export function createReminder(contactId) {
   var uid = firebase.auth().currentUser.uid;
   var createdAt = firebase.database.ServerValue.TIMESTAMP;
-  var dueTime = moment(firebase.database.ServerValue.TIMESTAMP).add(90, 'days').valueOf();
-  // var dueTime = moment("10-25-2017", "MM-DD-YYYY").valueOf();
 
-  var reminder = {
-    uid,
-    name: "90 Day Recurring",
-    recurring: true,
-    createdAt,
-    dueTime
-  };
+  //get contact, which will have the name, recurrenceTime, etc to create reminder
+  firebase.database().ref('/contacts/' + contactId).once('value').then(function(snapshot) {
+    var contact = snapshot.val();
 
-  var correspondencesRef = firebase.database().ref('correspondences');
+    var remindersRef = firebase.database().ref('reminders');
 
-  var newCorrespondenceId = correspondencesRef.push({
-    uid,
-    recipient: "Lebron James",
-    createdAt,
-    dueTime,
-    completed: false,
-    reminders: [reminder]
+    var newReminderId = remindersRef.push({
+      uid,
+      recipient: contact.name,
+      createdAt,
+      name: contact.recurrenceTime.phrase,
+      recurring: true,
+      dueTime: moment(firebase.database.ServerValue.TIMESTAMP).add(contact.recurrenceTime.duration).valueOf(),
+      completed: false,
+    });
   });
+
 }
 
-export function completeCorrespondence(correspondenceKey) {
-  var Correspondence = firebase.database().ref('correspondences').child(correspondenceKey);
+export function completeReminder(reminderKey) {
+  var Reminder = firebase.database().ref('reminders').child(reminderKey);
 
   return function (dispatch) {
     //this will trigger the .on(value) of the fetchInterests action/reducer, no need to dispatch an action
-    Correspondence.update({
+    Reminder.update({
       completed: true
     });
   }
 
 }
 
-export function snoozeCorrespondence(correspondenceKey, newDueTime) {
-  var Correspondence = firebase.database().ref('correspondences').child(correspondenceKey);
+export function snoozeReminder(reminderKey, newDueTime) {
+  var Reminder = firebase.database().ref('reminders').child(reminderKey);
 
   return function (dispatch) {
     //this will trigger the .on(value) of the fetchInterests action/reducer, no need to dispatch an action
-    Correspondence.update({
+    Reminder.update({
       dueTime: newDueTime
     });
   }

@@ -9,7 +9,8 @@ function mapStateToProps(state) {
     posts: state.posts,
     comments: state.comments,
     interests: state.interests,
-    correspondences: state.correspondences
+    reminders: state.reminders,
+    contacts: state.contacts
   }
 }
 

@@ -107,18 +107,21 @@ class App extends Component {
           {/*Complicated way of getting props to work with Router children of App*/}
           { React.Children.map(this.props.children, child => React.cloneElement(child, {
               interests: this.props.interests,
-              correspondences: this.props.correspondences,
+              reminders: this.props.reminders,
+              contacts: this.props.contacts,
               moveInterest: this.props.moveInterest,
               swapInterests: this.props.swapInterests,
               showModal: this.showModal.bind(this),
+              closeModal: this.closeModal.bind(this),
               saveInterestMetadata: this.saveInterestMetadata.bind(this),
               saveInterestResource: this.saveInterestResource.bind(this),
               fetchInterestResourceType: this.props.fetchInterestResourceType,
-              fetchCorrespondences: this.props.fetchCorrespondences,
-              completeCorrespondence: this.props.completeCorrespondence,
-              snoozeCorrespondence: this.props.snoozeCorrespondence,
+              fetchReminders: this.props.fetchReminders,
+              completeReminder: this.props.completeReminder,
+              snoozeReminder: this.props.snoozeReminder,
               fetchContacts: this.props.fetchContacts,
-              saveContact: this.props.saveContact
+              saveContact: this.props.saveContact,
+              saveSpecialReminder: this.props.saveSpecialReminder
             })
           )}
 
@@ -127,6 +130,7 @@ class App extends Component {
           isOpen={this.state.showModal}
           onRequestClose={this.closeModal}
           contentLabel="Interest Details"
+          style={{overlay: {zIndex: 1000}}}
         >
           {this.state.modalContent}
         </Modal>

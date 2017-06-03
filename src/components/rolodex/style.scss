@@ -6,7 +6,7 @@ $step: 1; // Set the initial step value
 @while $step <=10  {
 
   // darkens color step by step
-  .correspondences li:nth-child(#{$step}) {
+  .reminders li:nth-child(#{$step}) {
     // Here we use the SASS darken function and darken our color by 2% each time.  Set this to whatever percentage you like.
     background-color: adjust_hue($color, ($step * 5%));
   }
@@ -15,7 +15,7 @@ $step: 1; // Set the initial step value
   $step: $step + 1;
 }
 
-.correspondences li {
+.reminders li {
   border: none;
   color: white;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.28);
