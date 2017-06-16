@@ -59,7 +59,7 @@ class NewSpecialReminder extends Component {
 
   save() {
     var {recipientKey, title, date, repeatYearly} = this.state;
-    var recipient = this.props.recipient.find(function(recipient) {
+    var recipient = this.props.recipients.find(function(recipient) {
       return recipient['.key'] === recipientKey
     });
 
@@ -83,7 +83,7 @@ class NewSpecialReminder extends Component {
                            onChange={this.onUpdateRecipient.bind(this)}>
                 <option value="" disabled>Please select</option>
 
-                {this.props.recipient.map(function(recipient, i) {
+                {this.props.recipients.map(function(recipient, i) {
                   return <option key={i} value={recipient['.key']}>{recipient.name}</option>
                 })}
 
